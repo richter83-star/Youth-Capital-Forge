@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Agent V2 - Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .nav a {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #0056b3;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .card .value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status.healthy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📊 Marketing Agent V2</h1>
+        <p>Production-ready marketing automation platform</p>
+        <div class="nav">
+            <a href="/admin">Dashboard</a>
+            <a href="/admin/approvals">Approvals</a>
+            <a href="/admin/trends">Trends</a>
+            <a href="/admin/links">Links</a>
+            <a href="/admin/campaigns">Campaigns</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="dashboard">
+            <div class="card">
+                <h3>System Status</h3>
+                <div class="value"><span class="status healthy">Healthy</span></div>
+            </div>
+            <div class="card">
+                <h3>Pending Approvals</h3>
+                <div class="value" id="pending-count">0</div>
+            </div>
+            <div class="card">
+                <h3>Active Campaigns</h3>
+                <div class="value" id="campaigns-count">0</div>
+            </div>
+            <div class="card">
+                <h3>Total Clicks</h3>
+                <div class="value" id="clicks-count">0</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Quick Actions</h2>
+            <button class="btn btn-primary" onclick="ingestTrends()">Ingest Trends</button>
+            <button class="btn btn-primary" onclick="computeScores()">Compute Trend Scores</button>
+            <button class="btn btn-primary" onclick="createCampaign()">Create Campaign</button>
+        </div>
+        
+        <div class="section">
+            <h2>Recent Actions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="actions-table">
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: #999;">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Load dashboard data
+        async function loadDashboard() {
+            try {
+                // Load pending actions
+                const actionsRes = await fetch('/api/actions?status=pending_approval&limit=5');
+                const actions = await actionsRes.json();
+                
+                document.getElementById('pending-count').textContent = actions.length;
+                
+                // Load campaigns
+                const campaignsRes = await fetch('/api/campaigns');
+                const campaigns = await campaignsRes.json();
+                
+                document.getElementById('campaigns-count').textContent = campaigns.length;
+                
+                // Populate actions table
+                const tbody = document.getElementById('actions-table');
+                if (actions.length > 0) {
+                    tbody.innerHTML = actions.map(action => `
+                        <tr>
+                            <td>${action.id}</td>
+                            <td>${action.type}</td>
+                            <td><span class="status warning">${action.status}</span></td>
+                            <td>${new Date(action.created_at).toLocaleDateString()}</td>
+                            <td>
+                                <button class="btn btn-success" onclick="approveAction(${action.id})">Approve</button>
+                                <button class="btn btn-danger" onclick="denyAction(${action.id})">Deny</button>
+                            </td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #999;">No pending actions</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+        
+        async function ingestTrends() {
+            try {
+                const res = await fetch('/api/trends/ingest', { method: 'POST' });
+                const data = await res.json();
+                alert('Trend ingestion queued: ' + data.task_id);
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+        
+        async function computeScores() {
+            alert('Trend score computation queued');
+        }
+        
+        async function createCampaign() {
+            const name = prompt('Campaign name:');
+            if (!name) return;
+            
+            try {
+                const res = await fetch('/api/campaigns', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: name,
+                        objective: 'Marketing campaign',
+                        start_date: new Date().toISOString(),
+                        end_date: new Date(Date.now() + 30*24*60*60*1000).toISOString()
+                    })
+                });
+                const campaign = await res.json();
+                alert('Campaign created: ' + campaign.id);
+                loadDashboard();
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+        
+        async function approveAction(actionId) {
+            try {
+                const res = await fetch(`/api/actions/${actionId}/approve`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'approved', note: 'Approved from dashboard' })
+                });
+                if (res.ok) {
+                    alert('Action approved');
+                    loadDashboard();
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+        
+        async function denyAction(actionId) {
+            try {
+                const res = await fetch(`/api/actions/${actionId}/deny`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'denied', note: 'Denied from dashboard' })
+                });
+                if (res.ok) {
+                    alert('Action denied');
+                    loadDashboard();
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+        
+        // Load dashboard on page load
+        loadDashboard();
+        
+        // Refresh every 30 seconds
+        setInterval(loadDashboard, 30000);
+    </script>
+</body>
+</html>

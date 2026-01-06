@@ -1,0 +1,20 @@
+# RSS Feeds Configuration for Trend Ingestion
+
+feeds:
+  - name: "HackerNews"
+    url: "https://news.ycombinator.com/rss"
+  
+  - name: "TechCrunch"
+    url: "https://techcrunch.com/feed/"
+  
+  - name: "ProductHunt"
+    url: "https://www.producthunt.com/feed"
+  
+  - name: "ArxivML"
+    url: "https://arxiv.org/rss/cs.LG"
+  
+  - name: "Reddit-Technology"
+    url: "https://www.reddit.com/r/technology/.rss"
+  
+  - name: "BBC-Technology"
+    url: "https://feeds.bbc.co.uk/news/technology/rss.xml"

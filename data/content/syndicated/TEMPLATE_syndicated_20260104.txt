@@ -1,0 +1,162 @@
+# Daily Wealth Metrics Tracker - Notion Template [Get it here: http://localhost:9000/r/aj4tr1oc]
+
+## Sales Blurb
+
+Imagine waking up every morning with crystal‑clear insight into every dollar you earn, spend, and grow. No more scattered spreadsheets, no more guessing which investment is moving the needle, and no more anxiety about whether you're on track to hit your next financial milestone. The Daily Wealth Metrics Tracker is the ultimate Notion‑style template built specifically for wealth builders, investors, and entrepreneurs who demand precision, speed, and confidence in their financial tracking.
+
+**Why this tracker is a game‑changer**
+- **All‑in‑one dashboard**: Instantly see total net worth, daily cash flow, and progress toward your biggest goals on a single, beautifully designed page. 
+- **Daily micro‑tracking**: Log income, expenses, savings, and asset movements in seconds. Every entry feeds live formulas that update your net worth, cash‑on‑hand, and investment performance in real time.
+- **Weekly & monthly intelligence**: Automated summaries surface trends, highlight cash‑flow gaps, and flag opportunities before they slip away. Compare month‑over‑month growth, spot seasonal spending patterns, and adjust your strategy with data‑backed confidence.
+- **Goal‑crushing framework**: Set financial targets—whether it's a $100k portfolio, a $10k emergency fund, or a specific ROI—and watch a progress bar fill as you log each contribution. The tracker even calculates the exact daily amount you need to stay on schedule.
+- **Granular categorization**: Income and expense categories are fully customizable, allowing you to drill down into revenue streams, business costs, lifestyle spending, and tax‑deductible items. 
+- **Asset & liability hub**: Keep every property, stock holding, crypto wallet, and loan in one place. Real‑time valuation fields pull in market data (via simple CSV imports) so you always know your true net worth.
+- **Visual storytelling**: Interactive charts, bar graphs, and trend lines turn raw numbers into compelling visuals that you can share with partners, investors, or your accountability group.
+
+**Act now—your financial future won't wait**
+Every day you delay is a day of potential growth lost. For a limited time, the Daily Wealth Metrics Tracker is available at an exclusive launch price, plus you'll receive three bonus modules: a "Financial Health Checklist," a "Tax‑Optimization Cheat Sheet," and a set of pre‑built KPI dashboards ready to copy‑paste. This offer expires in 72 hours, and after that the price returns to the standard rate.
+
+Take control, eliminate guesswork, and accelerate your wealth journey today. Click "Buy Now" and start seeing your financial story unfold—one metric at a time.
+
+---
+
+## Template [Get it here: http://localhost:9000/r/aj4tr1oc] Structure
+
+# Daily Wealth Metrics Tracker - Notion Template [Get it here: http://localhost:9000/r/aj4tr1oc] Structure
+
+## Dashboard Overview
+
+**Type:** Page
+
+**Properties:**
+- **Total Net Worth** (Formula): `prop('Assets Value') - prop('Liabilities Value')`
+- **Daily Cash Flow** (Rollup): Sum of Net Cash Flow from Daily Metrics
+- **Goal Progress** (Relation): Links to Goal Tracking database
+- **Last Updated** (Last Edited Time): Auto-updates on changes
+
+**Views:**
+- **Main Dashboard** (Gallery): Full-width layout showing all key metrics
+
+---
+
+## Daily Metrics Tracking Sections
+
+**Type:** Database
+
+**Properties:**
+- **Date** (Date): Entry date
+- **Income** (Number): Daily income amount
+- **Expense** (Number): Daily expense amount
+- **Savings** (Formula): `prop('Income') - prop('Expense')`
+- **Net Cash Flow** (Formula): `prop('Income') - prop('Expense') - prop('Investments')`
+- **Investments** (Number): Amount invested
+- **Category** (Multi-select): Salary, Business, Dividends, Rental, Other
+- **Notes** (Text): Additional details
+
+**Views:**
+- **Table View**: Sorted by Date (descending)
+- **Calendar View**: Visual calendar with date property
+
+---
+
+## Weekly & Monthly Summaries
+
+**Type:** Linked Database (from Daily Metrics)
+
+**Properties:**
+- **Week** (Formula): `formatDate(prop('Date'), "wo")`
+- **Month** (Formula): `formatDate(prop('Date'), "MMMM YYYY")`
+- **Total Income** (Rollup): Sum of Income
+- **Total Expense** (Rollup): Sum of Expense
+- **Net Savings** (Rollup): Sum of Savings
+
+**Views:**
+- **Weekly Summary**: Grouped by Week
+- **Monthly Summary**: Grouped by Month
+
+---
+
+## Goal Tracking
+
+**Type:** Database
+
+**Properties:**
+- **Goal Name** (Title): Name of the financial goal
+- **Target Amount** (Number): Goal target
+- **Current Amount** (Rollup): Sum of Savings from Daily Metrics
+- **Progress %** (Formula): `if(prop('Target Amount') == 0, 0, prop('Current Amount') / prop('Target Amount') * 100)`
+- **Deadline** (Date): Target completion date
+- **Status** (Select): Not Started, In Progress, Completed, Overdue
+- **Related Metrics** (Relation): Links to Daily Metrics entries
+
+**Views:**
+- **Goal Tracker** (Board): Grouped by Status
+- **Progress Chart** (Gallery): Shows Goal Name, Progress %, Deadline
+
+---
+
+## Income/Expense Categories
+
+**Type:** Database
+
+**Properties:**
+- **Category** (Select): Salary, Business, Dividends, Rental, Utilities, Marketing, Travel, Food, Taxes, Other
+- **Type** (Select): Income or Expense
+- **Amount** (Number): Transaction amount
+- **Date** (Date): Transaction date
+- **Linked Entry** (Relation): Links to Daily Metrics
+
+**Views:**
+- **Category Summary** (Table): Grouped by Category
+- **Expense Pie** (Gallery): Visual breakdown by Category and Amount
+
+---
+
+## Asset Tracking
+
+**Type:** Database
+
+**Properties:**
+- **Asset Name** (Title): Name of asset
+- **Category** (Select): Real Estate, Stocks, Bonds, Crypto, Business, Other
+- **Current Value** (Number): Current market value
+- **Acquisition Date** (Date): When asset was acquired
+- **Acquisition Cost** (Number): Original purchase price
+- **Growth %** (Formula): `if(prop('Acquisition Cost') == 0, 0, (prop('Current Value') - prop('Acquisition Cost')) / prop('Acquisition Cost') * 100)`
+- **Notes** (Text): Additional details
+
+**Views:**
+- **Asset Overview** (Table): Sorted by Current Value (descending)
+- **Growth Chart** (Gallery): Shows Asset Name and Growth %
+
+---
+
+## Progress Visualization
+
+**Type:** Page
+
+**Properties:**
+- **Net Worth Over Time** (Chart - Line): Source from Daily Metrics, X-axis: Date, Y-axis: Net Cash Flow
+- **Income vs Expense** (Chart - Bar): Source from Daily Metrics, X-axis: Date, Y-axis: Income and Expense
+- **Goal Completion** (Chart - Progress): Source from Goal Tracking, Value: Progress %
+
+---
+
+## Bonus Features
+
+**Type:** Page
+
+**Properties:**
+- **Financial Health Checklist** (Toggle List):
+  - Emergency Fund ≥ 3 months expenses
+  - Debt-to-Income < 30%
+  - Diversified Portfolio
+  - Tax Optimization Review
+
+- **Tax‑Optimization Cheat Sheet** (Text): Key deductions, quarterly filing dates, and strategies for maximizing after‑tax returns
+
+- **Pre‑built KPI Dashboards** (Template [Get it here: http://localhost:9000/r/aj4tr1oc] Button):
+  - Cash Flow KPI
+  - Investment ROI KPI
+  - Expense Ratio KPI
+

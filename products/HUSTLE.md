@@ -1,0 +1,269 @@
+# 14-Day Passive Income Roadmap Using AI Agents
+
+## Sales Blurb
+
+Imagine waking up every morning to a stream of income that never sleeps—no endless client calls, no 9‑to‑5 grind, just pure, automated cash flow powered by the smartest technology on the planet. The **14‑Day Passive Income Roadmap** is the ONLY proven, step‑by‑step system that teaches entrepreneurs and hustlers how to harness AI agents to build, launch, and scale multiple passive income streams in just two weeks.
+
+**Why this roadmap works:**
+- **AI‑first methodology** – You'll learn to deploy cutting‑edge AI agents that work 24/7, handling everything from market research to content creation, affiliate link placement, and micro‑service automation. 
+- **Zero‑to‑hero framework** – No prior coding or AI experience required. Each day breaks complex concepts into bite‑size actions you can execute in under an hour.
+- **Immediate revenue triggers** – Day‑by‑day income‑generation tactics are designed to produce your first dollars within the first 48 hours, giving you proof of concept and the confidence to double‑down.
+- **Scalable growth engine** – By Day 7 you'll have a solid foundation; Days 8‑14 teach you how to replicate, outsource, and multiply the same AI‑driven processes across new niches, turning a single $100‑a‑day stream into a $5,000‑a‑day empire.
+
+**What you'll get:**
+1. **A crystal‑clear 14‑day calendar** that tells you exactly what to do, when, and why. 
+2. **Hands‑on AI agent setup guides** for the most powerful, affordable tools (ChatGPT, Auto‑GPT, Zapier, Make, and more). 
+3. **Curated toolkits** – premium templates, prompt libraries, and plug‑and‑play scripts that cut setup time by 80%. 
+4. **Revenue‑focused strategies** – affiliate funnels, digital product drops, SaaS micro‑services, and AI‑generated content farms. 
+5. **Scaling playbooks** – automation layering, delegation frameworks, and data‑driven optimization tactics. 
+6. **Bonus vault** – exclusive community access, live Q&A webinars, and ready‑to‑use marketing swipe files.
+
+**Urgency:** This roadmap is released as a limited‑time launch bundle. The AI tools and prompt libraries are updated weekly for the next 30 days only—after that the price jumps and the bonuses disappear. If you're serious about escaping the time‑for‑money trap, the clock is ticking. Click **"Get Instant Access"** now, follow the 14‑day plan, and watch the AI agents start earning for you while you focus on living the life you've always wanted.
+
+*Your future self will thank you.*
+
+---
+
+## PDF Outline
+
+# 14-Day Passive Income Roadmap Using AI Agents
+
+## Introduction
+- The AI-powered passive income revolution
+- Why 14 days is all you need
+- What to expect from this roadmap
+
+## Day-by-Day Breakdown
+
+### Day 1: Orientation & Mindset
+**Objective:** Grasp the fundamentals of AI‑driven passive income and set clear financial goals.
+
+**Tasks:**
+- Read the introductory chapter on AI automation potential
+- Define 3 measurable income targets for the next 30 days
+- Create a dedicated workspace and install basic tools (Notion, Google Drive)
+
+**Tools & Resources:** Notion, Google Drive, PDF of the roadmap
+
+---
+
+### Day 2: AI Agent Foundations
+**Objective:** Set up your first AI agent using a no‑code platform.
+
+**Tasks:**
+- Create accounts on OpenAI, Zapier, and Make
+- Follow the step‑by‑step guide to launch a basic ChatGPT‑powered agent
+- Test the agent with a simple content‑generation prompt
+
+**AI Agent Setup:** Install OpenAI API key, connect to Zapier, create a trigger‑action workflow
+
+**Tools & Resources:** OpenAI API, Zapier free tier, Make.com
+
+---
+
+### Day 3: Niche Discovery & Validation
+**Objective:** Identify a high‑profit niche that AI can dominate.
+
+**Tasks:**
+- Run AI‑assisted market research using the agent built on Day 2
+- Validate 3 niche ideas with keyword volume and competition metrics
+- Select the niche with the highest ROI potential
+
+**AI Agent Setup:** Add a market‑research prompt library to the agent
+
+**Tools & Resources:** Ubersuggest (free), Google Trends, AnswerThePublic
+
+---
+
+### Day 4: Product Creation Blueprint
+**Objective:** Design a digital product or service that can be automated.
+
+**Tasks:**
+- Choose a product type (e‑book, mini‑course, affiliate funnel, SaaS micro‑tool)
+- Outline the content structure using AI‑generated outlines
+- Create a simple landing page mock‑up
+
+**AI Agent Setup:** Integrate a content‑outline generator prompt
+
+**Tools & Resources:** Canva (free), Carrd.co, Google Docs
+
+---
+
+### Day 5: Automated Content Production
+**Objective:** Generate the first batch of sellable content with AI.
+
+**Tasks:**
+- Use the AI agent to write 5 blog posts or video scripts
+- Export content to SEO‑optimized formats
+- Schedule posts using a social‑media automation tool
+
+**AI Agent Setup:** Add a content‑creation workflow (prompt → draft → edit → export)
+
+**Income Strategy:** Drive organic traffic to the landing page
+
+**Tools & Resources:** Zapier → WordPress, Buffer (free), Grammarly
+
+---
+
+### Day 6: Monetization Mechanics
+**Objective:** Hook the audience and embed revenue streams.
+
+**Tasks:**
+- Integrate affiliate links into the content
+- Set up a simple checkout page with Stripe
+- Create an email capture form and connect to MailerLite
+
+**AI Agent Setup:** Add an affiliate‑link insertion prompt
+
+**Income Strategy:** Affiliate commissions + direct product sales
+
+**Tools & Resources:** Stripe, MailerLite, ThirstyAffiliates
+
+---
+
+### Day 7: First Revenue Launch
+**Objective:** Go live and capture the first sales.
+
+**Tasks:**
+- Publish the landing page and content bundle
+- Run a 24‑hour flash‑sale using urgency copy
+- Track conversions with Google Analytics
+
+**AI Agent Setup:** Set up a conversion‑tracking webhook
+
+**Income Strategy:** Flash‑sale + affiliate referrals
+
+**Scaling Tactics:** Collect data for optimization
+
+**Tools & Resources:** Google Analytics, Hotjar (free)
+
+---
+
+### Day 8: Advanced AI Agent – Lead Nurturing
+**Objective:** Automate follow‑up sequences to increase LTV.
+
+**Tasks:**
+- Create a 5‑email nurture sequence using AI‑generated copy
+- Connect the sequence to MailerLite automation
+- Test deliverability and open‑rate metrics
+
+**AI Agent Setup:** Add an email‑copy generator and scheduler
+
+**Income Strategy:** Upsell and cross‑sell within the nurture flow
+
+**Tools & Resources:** MailerLite automation, MailTester
+
+---
+
+### Day 9: Diversify Income Streams
+**Objective:** Add a secondary passive stream using the same AI setup.
+
+**Tasks:**
+- Identify a complementary niche product (e.g., print‑on‑demand, micro‑SaaS)
+- Use the AI agent to create the new product assets
+- Integrate the new product into the existing funnel
+
+**AI Agent Setup:** Clone the content‑creation workflow for the new product
+
+**Income Strategy:** Additional product sales + affiliate upsell
+
+**Tools & Resources:** Printful, Gumroad, Bubble.io (no‑code SaaS)
+
+---
+
+### Day 10: Optimization & Split Testing
+**Objective:** Increase conversion rates through data‑driven tweaks.
+
+**Tasks:**
+- Run A/B tests on headlines, CTA buttons, and pricing
+- Use AI to analyze test results and suggest improvements
+- Implement the winning variations
+
+**AI Agent Setup:** Add a split‑test analysis prompt
+
+**Income Strategy:** Higher conversion = more revenue
+
+**Scaling Tactics:** Iterative optimization loop
+
+**Tools & Resources:** Google Optimize, Optimizely (free tier)
+
+---
+
+### Day 11: Scaling Automation Layers
+**Objective:** Layer additional AI agents to handle new tasks.
+
+**Tasks:**
+- Deploy a second agent for social‑media posting
+- Set up a third agent for customer support FAQs
+- Connect all agents through a central dashboard
+
+**AI Agent Setup:** Create multi‑agent orchestration via Make.com
+
+**Income Strategy:** Maintain revenue while freeing more of your time
+
+**Scaling Tactics:** Agent delegation hierarchy
+
+**Tools & Resources:** Make.com, ChatGPT API, Tidio (free)
+
+---
+
+### Day 12: Outsourcing & Delegation
+**Objective:** Transition repetitive tasks to virtual assistants.
+
+**Tasks:**
+- Document SOPs generated by AI for each workflow
+- Hire a VA on platforms like Upwork to monitor agents
+- Set up performance dashboards
+
+**AI Agent Setup:** Export SOPs as PDFs via AI
+
+**Income Strategy:** Focus on strategy while VAs handle execution
+
+**Scaling Tactics:** Human‑AI hybrid model
+
+**Tools & Resources:** Upwork, Trello, Zapier → Slack notifications
+
+---
+
+### Day 13: Advanced Scaling – Paid Traffic
+**Objective:** Inject paid ads to accelerate growth.
+
+**Tasks:**
+- Create AI‑generated ad copy and creatives
+- Launch a $50 test campaign on Facebook/Google
+- Use AI to monitor ROAS and reallocate budget
+
+**AI Agent Setup:** Add an ad‑copy generator and performance‑monitoring webhook
+
+**Income Strategy:** Paid traffic to boost sales volume
+
+**Scaling Tactics:** Scale budget based on AI‑validated ROI
+
+**Tools & Resources:** Facebook Ads Manager, Google Ads, AdCreative.ai (free trial)
+
+---
+
+### Day 14: Review, Refine & Future Roadmap
+**Objective:** Consolidate results, plan next 90‑day growth phase.
+
+**Tasks:**
+- Compile a performance report using AI analytics
+- Identify top‑performing streams and double‑down
+- Set goals for the next quarter and outline new AI projects
+
+**AI Agent Setup:** Generate a visual dashboard report
+
+**Income Strategy:** Strategic reinvestment of profits
+
+**Scaling Tactics:** Long‑term growth blueprint
+
+**Tools & Resources:** Google Data Studio, Notion roadmap template
+
+---
+
+## Bonus Materials
+- Lifetime access to a private Discord community of AI‑driven entrepreneurs
+- 3 ready‑to‑use prompt libraries (content, ads, email sequences)
+- Monthly live Q&A webinars for the first 6 months
+- Template pack: landing page, SOPs, email swipe files, and financial tracker
+

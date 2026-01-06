@@ -1,0 +1,59 @@
+# Core dependencies
+requests>=2.31.0
+schedule>=1.2.0
+python-dotenv>=1.0.0
+openai>=1.0.0
+
+# Web automation
+selenium>=4.15.0
+undetected-chromedriver>=3.5.4
+beautifulsoup4>=4.12.2
+cloudscraper>=1.2.71
+aiohttp>=3.9.0
+
+# Database
+redis>=5.0.1
+
+# Data processing
+pandas>=2.1.0
+numpy>=1.24.0
+
+# Cryptography
+cryptography>=41.0.0
+
+# Crypto trading
+ccxt>=4.1.0
+
+# Finance
+yfinance>=0.2.28
+forex-python>=1.9.2
+
+# Messaging
+pyTelegramBotAPI>=4.14.0
+discord.py>=2.3.0
+
+# Image processing
+Pillow>=10.0.0
+qrcode[pil]>=7.4.2
+opencv-python>=4.8.0
+
+# Automation (optional - may require admin on Windows)
+pyautogui>=0.9.54
+pyperclip>=1.8.2
+keyboard>=0.13.5
+mouse>=0.7.1
+
+# Payment processing
+stripe>=7.0.0
+
+# Web framework
+Flask>=3.0.0
+
+# Trend analysis (optional)
+pytrends>=4.9.2
+
+# Standard library modules (no install needed, but listed for reference):
+# os, json, time, random, threading, hashlib, base64, uuid
+# datetime, pathlib, typing, sqlite3, asyncio, smtplib
+# email, logging, pickle, zlib, subprocess, sys, re, html
+# itertools, collections, statistics, math

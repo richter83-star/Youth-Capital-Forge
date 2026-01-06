@@ -1,0 +1,9 @@
+{
+  "accounts": [
+    {
+      "username": "your_tiktok_username",
+      "password": "your_password",
+      "email": "your_email@example.com"
+    }
+  ]
+}

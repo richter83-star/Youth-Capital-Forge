@@ -1,0 +1,26 @@
+{
+  "name": "youth-capital-forge",
+  "version": "1.0.0",
+  "description": "Autonomous multi-platform Reels/TikTok + Gumroad",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "tiktok": "node tiktok_index.js",
+    "multi": "node multi_platform.js",
+    "generate": "node generator.js",
+    "sync": "node utils/sync_products.js",
+    "report": "node utils/getMarketingReport.js",
+    "next": "node utils/checkNextRun.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "fs-extra": "^11.3.3",
+    "instagram-private-api": "^1.46.1",
+    "puppeteer": "^23.11.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "sharp": "^0.34.5"
+  }
+}
