@@ -38,7 +38,7 @@ qrcode[pil]>=7.4.2
 opencv-python>=4.8.0
 
 # Automation (optional - may require admin on Windows)
-pyautogui>=0.9.54
+# pyautogui>=0.9.54  # Disabled for security and containerization compatibility
 pyperclip>=1.8.2
 keyboard>=0.13.5
 mouse>=0.7.1

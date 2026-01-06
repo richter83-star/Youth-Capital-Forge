@@ -7,3 +7,28 @@ queue/*.mp4
 queue/*_processed.mp4
 queue/*_watermark.png
 
+# Sensitive files
+.encryption_key
+data/engine.db
+data/**/*.db
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment and config
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

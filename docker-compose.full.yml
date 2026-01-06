@@ -1,0 +1,122 @@
+version: '3.8'
+
+# Full stack docker-compose for Youth Capital Forge
+# Includes Cash Engine, Instagram/TikTok automation, and Marketing Agent V2
+
+services:
+  cash-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.cash-engine
+    container_name: cash-engine
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./products:/app/products
+      - ./output:/app/output
+      - ./.env:/app/.env:ro
+    environment:
+      - GUMROAD_TOKEN=${GUMROAD_TOKEN}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - MARKETING_AGENT_URL=http://marketing-agent:8000
+      - TWITTER_BEARER_TOKEN=${TWITTER_BEARER_TOKEN}
+      - TWITTER_API_KEY=${TWITTER_API_KEY}
+      - TWITTER_API_SECRET=${TWITTER_API_SECRET}
+      - TWITTER_ACCESS_TOKEN=${TWITTER_ACCESS_TOKEN}
+      - TWITTER_ACCESS_TOKEN_SECRET=${TWITTER_ACCESS_TOKEN_SECRET}
+      - REDDIT_CLIENT_ID=${REDDIT_CLIENT_ID}
+      - REDDIT_CLIENT_SECRET=${REDDIT_CLIENT_SECRET}
+      - TEMPLATE_GENERATION_ENABLED=${TEMPLATE_GENERATION_ENABLED:-true}
+      - AUTO_UPLOAD_TO_GUMROAD=${AUTO_UPLOAD_TO_GUMROAD:-true}
+    restart: unless-stopped
+    depends_on:
+      - marketing-agent
+    networks:
+      - cash_engine_network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sqlite3; conn = sqlite3.connect('./data/engine.db'); conn.close()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  instagram-automation:
+    build:
+      context: .
+      dockerfile: Dockerfile.node-automation
+    container_name: instagram-automation
+    volumes:
+      - ./queue:/app/queue
+      - ./logs:/app/logs
+      - ./accounts.json:/app/accounts.json:ro
+      - ./.env:/app/.env:ro
+    environment:
+      - IG_USERNAME=${IG_USERNAME}
+      - IG_PASSWORD=${IG_PASSWORD}
+      - MARKETING_AGENT_URL=http://marketing-agent:8000
+      - GUMROAD_TOKEN=${GUMROAD_TOKEN}
+    restart: unless-stopped
+    networks:
+      - cash_engine_network
+    # Note: Requires display server for Puppeteer - consider headless mode
+
+  marketing-agent:
+    build:
+      context: ./marketing_agent_v2
+      dockerfile: Dockerfile
+    container_name: marketing-agent
+    command: uvicorn app.main:app --host 127.0.0.1 --port 8000
+    ports:
+      - "127.0.0.1:9000:8000"
+    volumes:
+      - ./marketing_agent_v2:/app
+    environment:
+      - DATABASE_URL=postgresql://marketing_user:marketing_password@marketing-postgres:5432/marketing_db
+      - REDIS_URL=redis://marketing-redis:6379/0
+      - CELERY_BROKER_URL=redis://marketing-redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://marketing-redis:6379/0
+    depends_on:
+      - marketing-postgres
+      - marketing-redis
+    networks:
+      - cash_engine_network
+    restart: unless-stopped
+
+  marketing-postgres:
+    image: postgres:15-alpine
+    container_name: marketing-postgres
+    environment:
+      - POSTGRES_USER=marketing_user
+      - POSTGRES_PASSWORD=marketing_password
+      - POSTGRES_DB=marketing_db
+    volumes:
+      - marketing_postgres_data:/var/lib/postgresql/data
+    networks:
+      - cash_engine_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketing_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  marketing-redis:
+    image: redis:7-alpine
+    container_name: marketing-redis
+    volumes:
+      - marketing_redis_data:/data
+    networks:
+      - cash_engine_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  marketing_postgres_data:
+  marketing_redis_data:
+
+networks:
+  cash_engine_network:
+    driver: bridge

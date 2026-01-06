@@ -210,7 +210,7 @@ class RealAffiliateManager:
                     "start_date": datetime.now().isoformat(),
                     "end_date": (datetime.now() + timedelta(days=365)).isoformat()
                 },
-                timeout=5
+                timeout=10
             )
             
             if response.status_code == 200:
@@ -275,7 +275,7 @@ class RealAffiliateManager:
                             "affiliate_id": user_id
                         }
                     },
-                    timeout=5
+                    timeout=10
                 )
                 
                 if response.status_code == 200:

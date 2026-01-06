@@ -1,0 +1,12 @@
+version: '3.8'
+
+# Production override for Marketing Agent V2
+# Binds uvicorn to 127.0.0.1 for security (localhost only)
+
+services:
+  api:
+    command: uvicorn app.main:app --host 127.0.0.1 --port 8000
+    # Note: In Docker, 127.0.0.1 binds to container's localhost
+    # For external access, use reverse proxy (nginx) or port mapping
+    ports:
+      - "127.0.0.1:9000:8000"  # Only accessible from host's localhost
