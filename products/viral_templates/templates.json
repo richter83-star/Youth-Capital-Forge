@@ -1,0 +1,275 @@
+{
+  "templates": {
+    "thread_entrepreneur_001": {
+      "id": "thread_entrepreneur_001",
+      "category": "entrepreneur",
+      "platform": "twitter",
+      "type": "thread",
+      "template": "🔥 {HOOK}\n\n💡 {POINT_1}\n\n💡 {POINT_2}\n\n💡 {POINT_3}\n\n🚀 {CTA}",
+      "variables": {
+        "HOOK": "The #1 mistake entrepreneurs make...",
+        "POINT_1": "They focus on perfection instead of shipping",
+        "POINT_2": "They build in a vacuum without market feedback",
+        "POINT_3": "They wait for the 'perfect' time to launch",
+        "CTA": "{AFFILIATE_LINK}"
+      },
+      "tags": [
+        "entrepreneurship",
+        "business",
+        "startup"
+      ]
+    },
+    "thread_passive_income_001": {
+      "id": "thread_passive_income_001",
+      "category": "passiveincome",
+      "platform": "twitter",
+      "type": "thread",
+      "template": "💰 {HOOK}\n\n📊 {POINT_1}\n\n📈 {POINT_2}\n\n💎 {POINT_3}\n\n🔗 {CTA}",
+      "variables": {
+        "HOOK": "7 passive income streams that changed my life:",
+        "POINT_1": "Digital products (no inventory, instant delivery)",
+        "POINT_2": "Affiliate marketing (earn while you sleep)",
+        "POINT_3": "Automated services (scale without you)",
+        "CTA": "{AFFILIATE_LINK}"
+      },
+      "tags": [
+        "passiveincome",
+        "money",
+        "wealth"
+      ]
+    },
+    "post_linkedin_001": {
+      "id": "post_linkedin_001",
+      "category": "business",
+      "platform": "linkedin",
+      "type": "post",
+      "template": "{HOOK}\n\n{POINT_1}\n\n{POINT_2}\n\n{CTA}",
+      "variables": {
+        "HOOK": "The biggest lesson I learned building a 6-figure business:",
+        "POINT_1": "Focus on ONE thing and master it completely",
+        "POINT_2": "Then scale it systematically before adding complexity",
+        "CTA": "{AFFILIATE_LINK}"
+      },
+      "tags": [
+        "business",
+        "success",
+        "entrepreneurship"
+      ]
+    },
+    "thread_business_001": {
+      "id": "thread_business_001",
+      "category": "business",
+      "platform": "twitter",
+      "type": "thread",
+      "template": "⚡ {HOOK}\n\n1️⃣ {POINT_1}\n2️⃣ {POINT_2}\n3️⃣ {POINT_3}\n\n👇 {CTA}",
+      "variables": {
+        "HOOK": "3 business principles that doubled my revenue:",
+        "POINT_1": "Value first, profit follows",
+        "POINT_2": "Build systems, not just products",
+        "POINT_3": "Serve one niche exceptionally well",
+        "CTA": "{AFFILIATE_LINK}"
+      },
+      "tags": [
+        "business",
+        "revenue",
+        "growth"
+      ]
+    },
+    "post_facebook_001": {
+      "id": "post_facebook_001",
+      "category": "business",
+      "platform": "facebook",
+      "type": "post",
+      "template": "{HOOK}\n\n{STORY}\n\n{INSIGHT}\n\n{CTA}",
+      "variables": {
+        "HOOK": "Here's what I learned building a 6-figure business:",
+        "STORY": "I started with $0 and built it to $100k in 12 months",
+        "INSIGHT": "The secret? Focus on ONE thing and master it completely",
+        "CTA": "{AFFILIATE_LINK}"
+      },
+      "tags": [
+        "business",
+        "entrepreneurship",
+        "success"
+      ]
+    },
+    "post_facebook_002": {
+      "id": "post_facebook_002",
+      "category": "passiveincome",
+      "platform": "facebook",
+      "type": "post",
+      "template": "💰 {HOOK}\n\n{POINT_1}\n\n{POINT_2}\n\n{POINT_3}\n\n🔗 {CTA}",
+      "variables": {
+        "HOOK": "7 passive income streams I'm using right now:",
+        "POINT_1": "1. Digital products (no inventory needed)",
+        "POINT_2": "2. Affiliate marketing (scales automatically)",
+        "POINT_3": "3. Automated services (works while you sleep)",
+        "CTA": "{AFFILIATE_LINK}"
+      },
+      "tags": [
+        "passiveincome",
+        "money",
+        "wealth"
+      ]
+    },
+    "thread_monetization_001": {
+      "id": "thread_monetization_001",
+      "category": "monetization",
+      "platform": "facebook",
+      "type": "thread",
+      "template": "1/{TOTAL}\n\n{HOOK}\n\n2/{TOTAL} {EMOJI_1} {TITLE_1}\n\n{POINT_1}\n\n3/{TOTAL} {EMOJI_2} {TITLE_2}\n\n{POINT_2}\n\n4/{TOTAL} {EMOJI_3} {TITLE_3}\n\n{POINT_3}\n\n5/{TOTAL} {EMOJI_4} {TITLE_4}\n\n{POINT_4}\n\n6/{TOTAL} {EMOJI_5} {TITLE_5}\n\n{POINT_5}\n\n7/{TOTAL} {EMOJI_6} {TITLE_6}\n\n{POINT_6}\n\n8/{TOTAL} {EMOJI_7} {TITLE_7}\n\n{POINT_7}\n\n9/{TOTAL} {EMOJI_8} {TITLE_8}\n\n{POINT_8}\n\n10/{TOTAL} {EMOJI_9} {TITLE_9}\n\n{POINT_9}\n\n{FINAL_CTA}",
+      "variables": {
+        "TOTAL": "10",
+        "HOOK": "You don't need 100K followers to make money on social media.\n\nYou need the right strategy.\n\nHere's how to make your first $1,000 with 2,000 followers:",
+        "EMOJI_1": "🎯",
+        "TITLE_1": "Pick ONE Revenue Stream",
+        "POINT_1": "Don't try everything at once.\n\nFocus on one of these at a time:\n• Digital products (requires traffic)\n• Coaching/Consulting (requires expertise)\n• Affiliate marketing (requires a lot of clicks)\n• Sponsored content (requires some following)\n\nMaster one, then add another.",
+        "EMOJI_2": "📦",
+        "TITLE_2": "Create a Digital Product",
+        "POINT_2": "Start simple:\n\n• Notion template ($19)\n• PDF guide ($29)\n• Mini course ($97)\n\nSolve ONE specific problem.",
+        "EMOJI_3": "🎁",
+        "TITLE_3": "Build an Email List",
+        "POINT_3": "Social media = rented land.\n\nEmail = owned land.\n\nGive away a freebie:\n• Checklist\n• Template\n• Guide",
+        "EMOJI_4": "💬",
+        "TITLE_4": "Start Conversations",
+        "POINT_4": "Don't just post.\n\nEngage:\n• Reply to comments\n• Answer DMs\n• Join conversations\n\nRelationships = revenue.",
+        "EMOJI_5": "🤝",
+        "TITLE_5": "Offer Services",
+        "POINT_5": "Before you have products, offer services:\n\n• 1-on-1 coaching ($200/session)\n• Content creation ($500/month)\n• Strategy calls ($150/hour)",
+        "EMOJI_6": "📊",
+        "TITLE_6": "Track Everything",
+        "POINT_6": "What converts?\n• Which posts drive sales?\n• What content gets DMs?\n• Where do customers come from?\n\nDouble down on what works.",
+        "EMOJI_7": "🎯",
+        "TITLE_7": "Price for Value",
+        "POINT_7": "Don't compete on price but on value.\n\nIf you solve a $10,000 problem, charge $2,000 and the client will return.",
+        "EMOJI_8": "🔄",
+        "TITLE_8": "Launch Multiple Times",
+        "POINT_8": "One launch isn't enough.\n\nPromote your product:\n• Weekly emails\n• Monthly posts\n• Quarterly campaigns",
+        "EMOJI_9": "⏰",
+        "TITLE_9": "Be Patient",
+        "POINT_9": "First $1,000 takes the longest.\n\nThen it gets easier:\n• Month 1-2: $0\n• Month 3-6: $1000\n• Month 7-9: $3000\n• Month 10-12: $5000+\n\nKeep going.",
+        "FINAL_CTA": "What's your first revenue stream going to be? 👇\n\n{AFFILIATE_LINK}"
+      },
+        "tags": [
+        "monetization",
+        "business",
+        "revenue",
+        "creator"
+      ]
+    },
+    "thread_viral_growth_001": {
+      "id": "thread_viral_growth_001",
+      "category": "growth",
+      "platform": "facebook",
+      "type": "thread",
+      "template": "{HOOK}\n\n{WHY_IT_MATTERS}\n\n{INTRO}\n\n{STRATEGY_TITLE}\n\n1️⃣ {STRATEGY_1_TITLE}\n\n{STRATEGY_1_CONTENT}\n\n2️⃣ {STRATEGY_2_TITLE}\n\n{STRATEGY_2_CONTENT}\n\n3️⃣ {STRATEGY_3_TITLE}\n\n{STRATEGY_3_CONTENT}\n\n4️⃣ {STRATEGY_4_TITLE}\n\n{STRATEGY_4_CONTENT}\n\n5️⃣ {STRATEGY_5_TITLE}\n\n{STRATEGY_5_CONTENT}\n\n{CONCLUSION}\n\n{FINAL_CTA}\n\n{BONUS}",
+      "variables": {
+        "HOOK": "How to go viral in 2026?\n\nLet me show the tools and strategies you should use to grow 100,000+ followers (check comments👇)",
+        "WHY_IT_MATTERS": "But first...why going viral actually matters?\n\nHere's what one viral content can do:\n→ 10K, 20K or 100K new followers who didn't know you existed\n→ Inbound opportunities you'd spend months chasing otherwise\n→ Social proof that makes people take you seriously\n→ Authority in your niche overnight\n\nI've seen people land $20K clients from one viral thread. Get podcast invitations. Build entire businesses off the momentum of a single post.\n\nThe catch? Most people have no idea how to make it happen consistently.",
+        "INTRO": "5 Strategies That Actually Work in 2025",
+        "STRATEGY_TITLE": "",
+        "STRATEGY_1_TITLE": "Steal Proven Structures (Don't Reinvent the Wheel)",
+        "STRATEGY_1_CONTENT": "Original content is overrated. Viral content follows patterns.\n\nFind threads in your niche that got millions of views. Study the structure. Recreate it with your own angle.\n\nThe framework did the heavy lifting. You just need to execute.\n\nFor example, this guy literally copied all my viral video formats and jumped from 0 to almost 300K followers in just a few months!👇️",
+        "STRATEGY_2_TITLE": "Hook in 3 Seconds or Die",
+        "STRATEGY_2_CONTENT": "Nobody reads past the first line unless you earn it. Sometimes I realize I made a bad video hook after going live and regretting not working on it more.\n\nBad hook: \"Here are some tips for productivity...\"\n\nViral hook: \"I wasted 3 years being 'busy' instead of productive. Here's what actually works:\"\n\nLead with curiosity, controversy, or a bold claim. Everything else is noise.\n\nFocus on the hook more. That's my goal for 2026.",
+        "STRATEGY_3_TITLE": "Use Meme Comments to Hijack Viral Posts",
+        "STRATEGY_3_CONTENT": "This is the fastest engagement hack nobody talks about. Find posts with 100K+ views in your niche (posted max 24 hours prior). Drop a meme comment in the first 100 comments\n\nResult: 1k or 5k likes, 1000s of profile visits, 100s of followers\n\nYou don't make content. You strategically place yourself where attention already is\n\nThis is why I built the viral meme library in ViralSky so you don't have to hunt for memes that work\n\nTry https://www.viralsky.ai/",
+        "STRATEGY_4_TITLE": "Ride the 48-Hour Wave (Not Trends)",
+        "STRATEGY_4_CONTENT": "Everyone says \"jump on trends early\" but that's garbage advice. By the time you see a trend, it's already saturated.\n\nHere's what actually works:\n\nFind posts in your niche that blew up in the last 24-48 hours. Not weeks ago. Not months ago. Yesterday.\n\nThen create your own take on that exact topic while it's still hot.\n\nWhy this works: The algorithm is already pushing that topic. People are already searching for it.\n\nYou surf the wave, not create it.",
+        "STRATEGY_5_TITLE": "Template Everything",
+        "STRATEGY_5_CONTENT": "Stop starting from scratch every time. I've written threads that got 100M+ views. The secret?\n\nI use the same structures over and over. Example template: \"RIP xyz\". Here are 10 better alternatives.\n\nThis works for business advice, personal stories, how-to guides, literally everything.\n\nAll my million-view templates are inside https://www.viralsky.ai/ if you want the exact structures I use.\n\nNo guessing required. Just copy paste them. Plans start at only $5.",
+        "CONCLUSION": "6. Going viral in 2025 isn't luck. It's not talent.\n\nIt's knowing what works and doing it consistently. You can spend the next year experimenting and hoping something hits...\n\nOr you can copy what's already proven. Your call.\n\nIf you want the shortcut: ViralSky gives you the meme comments library, thread templates, and AI thread generator to go viral constantly.\n\nCheck it out here. Now go make something blow up.",
+        "FINAL_CTA": "{AFFILIATE_LINK}",
+        "BONUS": "BONUS: Get a yearly plan and you'll be on an onboarding call (optional) with me."
+      },
+        "tags": [
+        "growth",
+        "viral",
+        "socialmedia",
+        "engagement",
+        "strategy"
+      ]
+    },
+    "thread_creator_mindset_001": {
+      "id": "thread_creator_mindset_001",
+      "category": "mindset",
+      "platform": "facebook",
+      "type": "thread",
+      "template": "1/{TOTAL} {EMOJI} {TITLE}\n\n{HOOK}\n\n2/{TOTAL} {EMOJI_1} {POINT_1_TITLE}\n\n{POINT_1_CONTENT}\n\n3/{TOTAL} {EMOJI_2} {POINT_2_TITLE}\n\n{POINT_2_CONTENT}\n\n4/{TOTAL} {EMOJI_3} {POINT_3_TITLE}\n\n{POINT_3_CONTENT}\n\n5/{TOTAL} {EMOJI_4} {POINT_4_TITLE}\n\n{POINT_4_CONTENT}\n\n6/{TOTAL} {EMOJI_5} {POINT_5_TITLE}\n\n{POINT_5_CONTENT}\n\n7/{TOTAL} {EMOJI_6} {POINT_6_TITLE}\n\n{POINT_6_CONTENT}\n\n8/{TOTAL} {EMOJI_7} {POINT_7_TITLE}\n\n{POINT_7_CONTENT}\n\n{FINAL_CTA}",
+      "variables": {
+        "TOTAL": "8",
+        "EMOJI": "🧠",
+        "TITLE": "The Creator Mindset: How to Think Like a Successful Creator",
+        "HOOK": "Success isn't about tactics.\n\nIt's about mindset.\n\nHere's how successful creators think:",
+        "EMOJI_1": "🎯",
+        "POINT_1_TITLE": "Long-Term Thinking",
+        "POINT_1_CONTENT": "Most creators quit in 3 months.\n\nSuccessful creators think in years.\n\nThey know:\n• Month 1-3: Learning\n• Month 4-6: Building\n• Month 7-12: Growing\n• Year 2+: Scaling\n\nPlay the long game.",
+        "EMOJI_2": "💪",
+        "POINT_2_TITLE": "Embrace Failure",
+        "POINT_2_CONTENT": "Every failure is data.\n\n• Post flopped? Learn why.\n• Product didn't sell? Iterate.\n• Collaboration failed? Move on.\n\nFail fast. Learn faster.",
+        "EMOJI_3": "🎁",
+        "POINT_3_TITLE": "Value First",
+        "POINT_3_CONTENT": "Don't think \"what can I get?\"\n\nThink \"what can I give?\"\n\n• Free content\n• Helpful replies\n• Valuable insights\n• Genuine connections\n\nValue compounds.",
+        "EMOJI_4": "📊",
+        "POINT_4_TITLE": "Data-Driven Decisions",
+        "POINT_4_CONTENT": "Don't guess. Measure.\n\nTrack:\n• What works\n• What doesn't\n• Why it works\n• How to improve\n\nData > opinions.",
+        "EMOJI_5": "🔄",
+        "POINT_5_TITLE": "Iterate Constantly",
+        "POINT_5_CONTENT": "Your first version will suck.\n\nThat's okay.\n\nShip → Learn → Improve → Repeat.\n\nProgress > perfection.",
+        "EMOJI_6": "🤝",
+        "POINT_6_TITLE": "Community Over Competition",
+        "POINT_6_CONTENT": "Other creators aren't competition.\n\nThey're community.\n\n• Collaborate\n• Support\n• Learn together\n• Grow together\n\nRising tide lifts all boats.",
+        "EMOJI_7": "⏰",
+        "POINT_7_TITLE": "Consistency > Motivation",
+        "POINT_7_CONTENT": "Motivation fades.\n\nSystems don't.\n\nBuild systems:\n• Content calendar\n• Creation process\n• Engagement routine\n• Review schedule\n\nSystems create success.",
+        "FINAL_CTA": "What mindset shift do you need to make? 👇\n\n{AFFILIATE_LINK}"
+      },
+        "tags": [
+        "mindset",
+        "creator",
+        "success",
+        "personaldevelopment"
+      ]
+    },
+    "thread_personal_brand_001": {
+      "id": "thread_personal_brand_001",
+      "category": "personalbranding",
+      "platform": "facebook",
+      "type": "thread",
+      "template": "1/{TOTAL} {TITLE}\n\n{HOOK}\n\n2/{TOTAL} {EMOJI_1} {POINT_1_TITLE}\n\n{POINT_1_CONTENT}\n\n3/{TOTAL} {EMOJI_2} {POINT_2_TITLE}\n\n{POINT_2_CONTENT}\n\n4/{TOTAL} {EMOJI_3} {POINT_3_TITLE}\n\n{POINT_3_CONTENT}\n\n5/{TOTAL} {EMOJI_4} {POINT_4_TITLE}\n\n{POINT_4_CONTENT}\n\n6/{TOTAL} {EMOJI_5} {POINT_5_TITLE}\n\n{POINT_5_CONTENT}\n\n7/{TOTAL} {EMOJI_6} {POINT_6_TITLE}\n\n{POINT_6_CONTENT}\n\n8/{TOTAL} {EMOJI_7} {POINT_7_TITLE}\n\n{POINT_7_CONTENT}\n\n{FINAL_CTA}",
+      "variables": {
+        "TOTAL": "8",
+        "TITLE": "How to build a personal brand that attracts opportunities",
+        "HOOK": "Your personal brand is your most valuable asset.\n\nIt's what opens doors before you even ask.\n\nHere's how to build one instantly👇",
+        "EMOJI_1": "🎯",
+        "POINT_1_TITLE": "Define Your Niche",
+        "POINT_1_CONTENT": "You can't be known for everything.\n\nPick ONE thing:\n• \"The productivity guy\"\n• \"The SaaS marketer\"\n• \"The creator economy expert\"\n\nOwn it.",
+        "EMOJI_2": "💬",
+        "POINT_2_TITLE": "Find Your Voice",
+        "POINT_2_CONTENT": "What makes you different?\n\n• Your perspective\n• Your stories\n• Your style\n\nDon't copy. Be authentic.",
+        "EMOJI_3": "📝",
+        "POINT_3_TITLE": "Create Consistently",
+        "POINT_3_CONTENT": "Brands are built through repetition.\n\nPost daily:\n• Your thoughts\n• Your learnings\n• Your journey\n\nPeople remember what they see often.",
+        "EMOJI_4": "🤝",
+        "POINT_4_TITLE": "Show Up Everywhere",
+        "POINT_4_CONTENT": "Don't just be on one platform:\n\n• Twitter/X\n• LinkedIn\n• Instagram\n• YouTube\n• Newsletter\n\nSame message, different formats.",
+        "EMOJI_5": "🎁",
+        "POINT_5_TITLE": "Give Value First",
+        "POINT_5_CONTENT": "Before asking for anything:\n\n• Share knowledge\n• Help others\n• Give templates\n• Answer questions\n\nValue builds trust.",
+        "EMOJI_6": "📖",
+        "POINT_6_TITLE": "Tell Your Story",
+        "POINT_6_CONTENT": "People connect with stories:\n\n• Your failures\n• Your wins\n• Your journey\n• Your lessons\n\nBe vulnerable. Be real.",
+        "EMOJI_7": "⏰",
+        "POINT_7_TITLE": "Be Patient",
+        "POINT_7_CONTENT": "Brands aren't built overnight.\n\nIt takes:\n• 6 months to be recognized\n• 1 year to be trusted\n• 2 years to be influential\n\nKeep going.",
+        "FINAL_CTA": "What's your personal brand going to be known for? 👇\n\n{AFFILIATE_LINK}"
+      },
+      "tags": [
+        "personalbranding",
+        "branding",
+        "business",
+        "strategy"
+      ]
+    }
+  }
+}

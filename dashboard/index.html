@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Engine Dashboard</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>💰 Cash Engine Dashboard</h1>
+                <div class="status-indicator">
+                    <span id="engine-status" class="status-badge">Checking...</span>
+                    <span id="last-update" class="last-update">Loading...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="auto-refresh">
+                    <span class="refresh-icon">🔄</span>
+                    <span>Auto-refresh: <span id="refresh-countdown">10</span>s</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Revenue Overview Section -->
+            <section class="dashboard-section revenue-section">
+                <h2>📊 Revenue Overview</h2>
+                <div class="revenue-grid">
+                    <div class="revenue-card">
+                        <div class="card-label">Today</div>
+                        <div class="card-value" id="revenue-today">$0.00</div>
+                    </div>
+                    <div class="revenue-card">
+                        <div class="card-label">This Week</div>
+                        <div class="card-value" id="revenue-week">$0.00</div>
+                    </div>
+                    <div class="revenue-card">
+                        <div class="card-label">This Month</div>
+                        <div class="card-value" id="revenue-month">$0.00</div>
+                    </div>
+                    <div class="revenue-card">
+                        <div class="card-label">Total Products</div>
+                        <div class="card-value" id="total-products">0</div>
+                    </div>
+                </div>
+                
+                <div class="charts-row">
+                    <div class="chart-container">
+                        <h3>Revenue by Source</h3>
+                        <canvas id="revenue-source-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Revenue Trend (7 Days)</h3>
+                        <canvas id="revenue-trend-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Metrics Section -->
+            <section class="dashboard-section performance-section">
+                <h2>📈 Performance Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Leads</div>
+                        <div class="metric-value" id="total-leads">0</div>
+                        <div class="metric-delta" id="leads-delta"></div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Active Campaigns</div>
+                        <div class="metric-value" id="active-campaigns">0</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">A/B Tests</div>
+                        <div class="metric-value" id="active-tests">0</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Content Items</div>
+                        <div class="metric-value" id="content-items">0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Status Section -->
+            <section class="dashboard-section status-section">
+                <h2>⚙️ System Status</h2>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-label">Engine Status</div>
+                        <div class="status-value" id="engine-status-value">Unknown</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">Database</div>
+                        <div class="status-value" id="database-status">Checking...</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">Gumroad API</div>
+                        <div class="status-value" id="gumroad-status">Checking...</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">Marketing Agent</div>
+                        <div class="status-value" id="marketing-agent-status">Checking...</div>
+                    </div>
+                </div>
+                
+                <div class="revenue-streams">
+                    <h3>Revenue Streams</h3>
+                    <div class="streams-list" id="revenue-streams-list">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Performance Section -->
+            <section class="dashboard-section content-section">
+                <h2>📰 Top Performing Content</h2>
+                <div class="table-container">
+                    <table id="content-performance-table">
+                        <thead>
+                            <tr>
+                                <th>Content File</th>
+                                <th>Platform</th>
+                                <th>Clicks</th>
+                                <th>Conversions</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="content-performance-body">
+                            <tr><td colspan="5">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Campaign Performance Section -->
+            <section class="dashboard-section campaign-section">
+                <h2>🔗 Campaign Performance</h2>
+                <div class="table-container">
+                    <table id="campaign-performance-table">
+                        <thead>
+                            <tr>
+                                <th>Campaign ID</th>
+                                <th>Impressions</th>
+                                <th>Clicks</th>
+                                <th>Conversions</th>
+                                <th>Revenue</th>
+                                <th>Commissions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="campaign-performance-body">
+                            <tr><td colspan="6">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Recent Activity Section -->
+            <section class="dashboard-section activity-section">
+                <h2>📋 Recent Activity</h2>
+                <div class="activity-feed" id="activity-feed">
+                    <!-- Populated by JavaScript -->
+                    <div class="activity-item">Loading recent activity...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

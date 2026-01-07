@@ -35,6 +35,7 @@ import numpy as np
 from cryptography.fernet import Fernet
 import ccxt
 import yfinance as yf
+from requests_oauthlib import OAuth1
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -1927,10 +1928,14 @@ class AffiliateManager:
 
 class ContentSyndicator:
     """REAL content syndication - distributes content with affiliate links"""
-    def __init__(self, affiliate_manager, products_dir: Path = Path("./products")):
+    def __init__(self, affiliate_manager, products_dir: Path = Path("./products"), viral_template_manager=None):
         self.affiliate_manager = affiliate_manager
         self.products_dir = products_dir
         self.syndicated_count = 0
+        self.viral_template_manager = viral_template_manager
+        self._twitter_state_path = Path("./data/twitter_post_state.json")
+        self._twitter_state_lock = threading.Lock()
+        self._platform_status = {}  # Track platform health
     
     def syndicate_content(self, content_file: Path, platforms: List[str] = None) -> int:
         """Syndicate content to multiple platforms with affiliate links"""
@@ -1977,7 +1982,13 @@ class ContentSyndicator:
     
     def auto_distribute_to_platforms(self, content_file: Path, platforms: List[str] = None) -> Dict[str, bool]:
         """Auto-distribute syndicated content to platforms via APIs"""
-        platforms = platforms or ["instagram", "twitter"]
+        # Default platforms: prefer Facebook/LinkedIn if Twitter is disabled
+        if platforms is None:
+            twitter_enabled = os.getenv("TWITTER_LIVE_POSTING", "false").lower() in ("1", "true", "yes", "on")
+            if twitter_enabled:
+                platforms = ["twitter", "facebook", "linkedin"]
+            else:
+                platforms = ["facebook", "linkedin"]
         results = {}
         
         try:
@@ -1987,32 +1998,97 @@ class ContentSyndicator:
                 return results
             
             # Extract key content for social media (first 280 chars for Twitter, etc.)
-            social_content = self._format_for_social(content)
+            # Pass platform to enable viral template generation
+            platform_map = {
+                "twitter": "twitter",
+                "x": "twitter",
+                "instagram": "instagram",
+                "linkedin": "linkedin",
+                "facebook": "facebook"
+            }
+            current_platform = platform_map.get(platforms[0].lower() if platforms else "twitter", "twitter")
+            social_content = self._format_for_social(content, platform=current_platform)
             
-            # Distribute to each platform
+            # Distribute to each platform (with platform-specific formatting)
             for platform in platforms:
                 try:
+                    # Format content for this specific platform
+                    platform_content = self._format_for_social(content, platform=platform.lower())
+                    
                     if platform.lower() == "twitter" or platform.lower() == "x":
-                        results[platform] = self._post_to_twitter(social_content, content_file)
+                        results[platform] = self._post_to_twitter(platform_content, content_file)
                     elif platform.lower() == "instagram":
-                        results[platform] = self._post_to_instagram(social_content, content_file)
+                        results[platform] = self._post_to_instagram(platform_content, content_file)
                     elif platform.lower() == "linkedin":
-                        results[platform] = self._post_to_linkedin(social_content, content_file)
+                        results[platform] = self._post_to_linkedin(platform_content, content_file)
+                    elif platform.lower() == "facebook":
+                        results[platform] = self._post_to_facebook(platform_content, content_file)
                     else:
                         logger.warning(f"Platform {platform} not yet supported for auto-distribution")
                         results[platform] = False
                 except Exception as e:
                     logger.error(f"Error posting to {platform}: {e}")
                     results[platform] = False
+                    # Continue to other platforms even if one fails
             
             return results
         except Exception as e:
             logger.error(f"Error in auto_distribute_to_platforms: {e}")
             return results
     
-    def _format_for_social(self, content: str, max_length: int = 280) -> str:
-        """Format content for social media platforms"""
-        # Extract title and first paragraph
+    def _format_for_social(self, content: str, max_length: int = 280, platform: str = "twitter") -> str:
+        """Format content for social media platforms with platform-specific rules"""
+        # Platform-specific limits
+        platform_limits = {
+            "twitter": 280,
+            "facebook": 5000,
+            "linkedin": 3000,
+            "instagram": 2200
+        }
+        max_length = platform_limits.get(platform.lower(), max_length)
+        
+        # Check if viral templates are enabled and manager is available
+        viral_manager = getattr(self, 'viral_template_manager', None)
+        if viral_manager and self.affiliate_manager.campaigns:
+            # Try to generate viral content based on content topic
+            # Extract topic from content (simple keyword matching)
+            topic_keywords = {
+                "entrepreneur": ["entrepreneur", "startup", "business"],
+                "passiveincome": ["passive", "income", "wealth", "money"],
+                "business": ["business", "revenue", "profit", "growth"]
+            }
+            
+            detected_topic = None
+            content_lower = content.lower()
+            for topic, keywords in topic_keywords.items():
+                if any(keyword in content_lower for keyword in keywords):
+                    detected_topic = topic
+                    break
+            
+            if detected_topic:
+                # Get affiliate link if available
+                affiliate_link = None
+                for campaign in self.affiliate_manager.campaigns:
+                    if detected_topic.lower() in campaign.get("name", "").lower():
+                        affiliate_link = self.affiliate_manager.generate_affiliate_link(
+                            campaign["id"], 
+                            campaign.get("product_url", "")
+                        )
+                        break
+                
+                # Generate viral content
+                viral_content = viral_manager.generate_for_topic(
+                    detected_topic, 
+                    platform, 
+                    affiliate_link
+                )
+                
+                if viral_content:
+                    import logging
+                    logging.debug(f"Generated viral content for {detected_topic} on {platform}")
+                    return viral_content[:max_length]
+        
+        # Fallback to original formatting with platform-specific rules
         lines = content.split('\n')
         title = ""
         body = ""
@@ -2024,17 +2100,57 @@ class ContentSyndicator:
                 body = line.strip()
                 break
         
-        # Combine title and body
-        if title and body:
-            social_text = f"{title}\n\n{body[:max_length - len(title) - 3]}..."
-        elif title:
-            social_text = title[:max_length]
-        elif body:
-            social_text = body[:max_length]
-        else:
-            social_text = content[:max_length]
+        # Platform-specific formatting
+        if platform.lower() == "linkedin":
+            # LinkedIn: Professional tone, no hashtags in main text
+            if title and body:
+                social_text = f"{title}\n\n{body}"
+            elif title:
+                social_text = title
+            elif body:
+                social_text = body
+            else:
+                social_text = content
+            # Remove hashtags from main text (can add in comments later)
+            import re
+            social_text = re.sub(r'#\w+', '', social_text)
+            return social_text[:max_length].strip()
         
-        return social_text[:max_length]
+        elif platform.lower() == "facebook":
+            # Facebook: Supports links, images, hashtags (max 30)
+            if title and body:
+                social_text = f"{title}\n\n{body}"
+            elif title:
+                social_text = title
+            elif body:
+                social_text = body
+            else:
+                social_text = content
+            return social_text[:max_length]
+        
+        elif platform.lower() == "instagram":
+            # Instagram: Hashtags (max 30), emoji-friendly
+            if title and body:
+                social_text = f"{title}\n\n{body}"
+            elif title:
+                social_text = title
+            elif body:
+                social_text = body
+            else:
+                social_text = content
+            return social_text[:max_length]
+        
+        else:  # Twitter or default
+            # Twitter: 280 chars, concise
+            if title and body:
+                social_text = f"{title}\n\n{body[:max_length - len(title) - 3]}..."
+            elif title:
+                social_text = title[:max_length]
+            elif body:
+                social_text = body[:max_length]
+            else:
+                social_text = content[:max_length]
+            return social_text[:max_length]
     
     def _post_to_twitter(self, content: str, content_file: Path) -> bool:
         """Post content to Twitter/X (requires API keys)"""
@@ -2046,41 +2162,585 @@ class ContentSyndicator:
         if not all([twitter_api_key, twitter_api_secret, twitter_access_token, twitter_access_secret]):
             logger.debug("Twitter API keys not configured - skipping auto-post")
             return False
+
+        # Phased rollout: only post if explicitly enabled
+        if os.getenv("TWITTER_LIVE_POSTING", "false").lower() not in ("1", "true", "yes", "on"):
+            logger.info("Twitter live posting disabled (TWITTER_LIVE_POSTING=false) - skipping auto-post")
+            return False
+
+        # Enforce live window (default 12h) starting at first successful tweet
+        duration_hours = float(os.getenv("TWITTER_LIVE_POSTING_DURATION_HOURS", "12"))
+        now_ts = datetime.now().timestamp()
+
+        state: Dict[str, Any] = {}
+        start_ts: float = 0.0
+        try:
+            with self._twitter_state_lock:
+                self._twitter_state_path.parent.mkdir(parents=True, exist_ok=True)
+                if self._twitter_state_path.exists():
+                    raw = self._twitter_state_path.read_text(encoding="utf-8").strip()
+                    state = json.loads(raw) if raw else {}
+                start_ts = float(state.get("start_ts", 0) or 0)
+                if start_ts > 0 and (now_ts - start_ts) > (duration_hours * 3600):
+                    logger.info("Twitter live posting window expired - skipping auto-post")
+                    return False
+        except Exception as e:
+            logger.warning(f"Twitter post state read failed (continuing): {e}")
+
+        # De-dupe: don't repost same file during the current live window
+        try:
+            posted = state.get("posted_files", {}) if isinstance(state, dict) else {}
+            if isinstance(posted, dict) and start_ts > 0:
+                last_post_ts = float(posted.get(content_file.name, 0) or 0)
+                if last_post_ts >= start_ts:
+                    logger.info(f"Twitter already posted during this live window: {content_file.name} - skipping")
+                    return False
+        except Exception:
+            pass
         
         try:
-            # Twitter API v2 posting would go here
-            # For now, log that it would post
-            logger.info(f"Would post to Twitter/X: {content[:50]}... (API integration ready)")
-            # TODO: Implement actual Twitter API call when keys are available
+            url = "https://api.twitter.com/2/tweets"
+            auth = OAuth1(
+                client_key=twitter_api_key,
+                client_secret=twitter_api_secret,
+                resource_owner_key=twitter_access_token,
+                resource_owner_secret=twitter_access_secret,
+            )
+
+            payload = {"text": (content or "").strip()[:280]}
+            if not payload["text"]:
+                return False
+
+            resp = requests.post(url, json=payload, auth=auth, timeout=15)
+            if resp.status_code not in (200, 201):
+                logger.error(f"Twitter post failed: HTTP {resp.status_code} - {resp.text[:500]}")
+                return False
+
+            data = resp.json() if resp.content else {}
+            tweet_id = (data.get("data") or {}).get("id")
+            logger.info(f"✅ Posted to Twitter/X ({content_file.name}) tweet_id={tweet_id}")
+
+            # Persist live window + per-file state
+            try:
+                with self._twitter_state_lock:
+                    state = state if isinstance(state, dict) else {}
+                    if not state.get("start_ts"):
+                        state["start_ts"] = now_ts
+                    posted = state.get("posted_files", {})
+                    if not isinstance(posted, dict):
+                        posted = {}
+                    posted[content_file.name] = now_ts
+                    state["posted_files"] = posted
+                    self._twitter_state_path.write_text(json.dumps(state, indent=2), encoding="utf-8")
+            except Exception as e:
+                logger.warning(f"Twitter post state write failed: {e}")
+
             return True
         except Exception as e:
             logger.error(f"Twitter post failed: {e}")
             return False
     
     def _post_to_instagram(self, content: str, content_file: Path) -> bool:
-        """Post content to Instagram (requires API or automation)"""
-        # Instagram posting typically requires automation tools or API
-        # For now, log that it would post
-        logger.info(f"Would post to Instagram: {content[:50]}... (API integration ready)")
-        # TODO: Implement Instagram posting via existing automation or API
+        """Post content to Instagram using Facebook Graph API (requires Instagram Business Account)"""
+        instagram_business_account_id = os.getenv('INSTAGRAM_BUSINESS_ACCOUNT_ID')
+        facebook_access_token = os.getenv('FACEBOOK_ACCESS_TOKEN')  # Same token as Facebook
+        
+        if not instagram_business_account_id or not facebook_access_token:
+            logger.debug("Instagram Business Account ID or Facebook access token not configured - skipping auto-post")
+            return False
+        
+        if not self._check_platform_status("instagram"):
+            return False
+        
+        # Extract affiliate link from content if present
+        affiliate_link = None
+        import re
+        link_match = re.search(r'\[Get it here: (https?://[^\]]+)\]', content)
+        if link_match:
+            affiliate_link = link_match.group(1)
+        
+        def _make_instagram_post():
+            # Instagram requires a 2-step process: create media container, then publish
+            # For text-only posts, we create a simple media container
+            url = f"https://graph.facebook.com/v18.0/{instagram_business_account_id}/media"
+            headers = {"Authorization": f"Bearer {facebook_access_token}"}
+            
+            # Format content for Instagram (max 2200 chars, hashtags supported)
+            formatted_content = content[:2200]
+            if affiliate_link:
+                formatted_content = f"{formatted_content}\n\n{affiliate_link}"
+            
+            # Step 1: Create media container (for text-only, we use caption-only approach)
+            # Note: Instagram API requires an image for most post types, but we can try caption-only
+            payload = {
+                "caption": formatted_content
+            }
+            
+            resp = requests.post(url, json=payload, headers=headers, timeout=15)
+            
+            if resp.status_code in (200, 201):
+                data = resp.json() if resp.content else {}
+                creation_id = data.get("id")
+                
+                if creation_id:
+                    # Step 2: Publish the media
+                    publish_url = f"https://graph.facebook.com/v18.0/{instagram_business_account_id}/media_publish"
+                    publish_payload = {"creation_id": creation_id}
+                    publish_resp = requests.post(publish_url, json=publish_payload, headers=headers, timeout=15)
+                    
+                    if publish_resp.status_code in (200, 201):
+                        publish_data = publish_resp.json() if publish_resp.content else {}
+                        media_id = publish_data.get("id", "")
+                        logger.info(f"✅ Posted to Instagram ({content_file.name}) media_id={media_id}")
+                        self._mark_platform_success("instagram")
+                        return True
+                    else:
+                        error_data = publish_resp.json() if publish_resp.content else {}
+                        error_msg = error_data.get('error', {}).get('message', publish_resp.text[:200])
+                        logger.error(f"Instagram publish failed: HTTP {publish_resp.status_code} - {error_msg}")
+                        return False
+                else:
+                    logger.error("Instagram: No creation_id returned")
+                    return False
+            elif resp.status_code == 190:
+                logger.error(f"Instagram token error (190): Token expired or invalid")
+                self._mark_platform_failed("instagram")
+                return False
+            elif resp.status_code in (4, 17):
+                logger.warning(f"Instagram rate limit (4/17): Rate limit exceeded")
+                raise Exception("Rate limit - will retry")
+            else:
+                error_data = resp.json() if resp.content else {}
+                error_msg = error_data.get('error', {}).get('message', resp.text[:200])
+                logger.error(f"Instagram post failed: HTTP {resp.status_code} - {error_msg}")
+                if resp.status_code in (401, 403):
+                    self._mark_platform_failed("instagram")
+                return False
+        
+        try:
+            return self._retry_api_call(_make_instagram_post, max_attempts=3, base_delay=2)
+        except Exception as e:
+            logger.error(f"Instagram post failed after retries: {e}")
+            return False
+    
+    def _retry_api_call(self, func, max_attempts=3, base_delay=1):
+        """Retry API call with exponential backoff"""
+        for attempt in range(max_attempts):
+            try:
+                return func()
+            except Exception as e:
+                if attempt == max_attempts - 1:
+                    raise
+                delay = base_delay * (2 ** attempt) + random.uniform(0, 1)
+                logger.warning(f"API call failed (attempt {attempt + 1}/{max_attempts}), retrying in {delay:.1f}s: {e}")
+                time.sleep(delay)
+        return False
+    
+    def _check_platform_status(self, platform: str) -> bool:
+        """Check if platform is healthy (not recently failed)"""
+        status = self._platform_status.get(platform, {})
+        if status.get("failed_at"):
+            # If failed less than 1 hour ago, skip
+            failed_ts = status.get("failed_at", 0)
+            if time.time() - failed_ts < 3600:
+                logger.debug(f"Platform {platform} marked as unhealthy, skipping")
+                return False
         return True
     
+    def _mark_platform_failed(self, platform: str):
+        """Mark platform as failed"""
+        self._platform_status[platform] = {"failed_at": time.time()}
+    
+    def _mark_platform_success(self, platform: str):
+        """Mark platform as successful"""
+        if platform in self._platform_status:
+            self._platform_status[platform].pop("failed_at", None)
+    
+    def get_platform_status(self) -> Dict[str, Dict[str, Any]]:
+        """Get status of all platforms for dashboard reporting"""
+        status = {}
+        for platform in ["facebook", "linkedin", "instagram", "twitter"]:
+            platform_status = self._platform_status.get(platform, {})
+            is_healthy = self._check_platform_status(platform)
+            has_credentials = False
+            
+            if platform == "facebook":
+                has_credentials = bool(os.getenv('FACEBOOK_ACCESS_TOKEN') and os.getenv('FACEBOOK_PAGE_ID'))
+            elif platform == "linkedin":
+                has_credentials = bool(os.getenv('LINKEDIN_ACCESS_TOKEN'))
+            elif platform == "instagram":
+                has_credentials = bool(os.getenv('INSTAGRAM_BUSINESS_ACCOUNT_ID') and os.getenv('FACEBOOK_ACCESS_TOKEN'))
+            elif platform == "twitter":
+                has_credentials = bool(all([
+                    os.getenv('TWITTER_API_KEY'),
+                    os.getenv('TWITTER_API_SECRET'),
+                    os.getenv('TWITTER_ACCESS_TOKEN'),
+                    os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
+                ]))
+            
+            status[platform] = {
+                "healthy": is_healthy,
+                "configured": has_credentials,
+                "failed_at": platform_status.get("failed_at"),
+                "last_error": platform_status.get("last_error")
+            }
+        
+        return status
+    
+    def _post_to_facebook(self, content: str, content_file: Path) -> bool:
+        """Post content to Facebook using Graph API v18.0"""
+        facebook_access_token = os.getenv('FACEBOOK_ACCESS_TOKEN')
+        facebook_page_id = os.getenv('FACEBOOK_PAGE_ID')
+        
+        if not facebook_access_token or not facebook_page_id:
+            logger.debug("Facebook access token or page ID not configured - skipping auto-post")
+            return False
+        
+        if not self._check_platform_status("facebook"):
+            return False
+        
+        # Extract affiliate link from content if present
+        affiliate_link = None
+        import re
+        link_match = re.search(r'\[Get it here: (https?://[^\]]+)\]', content)
+        if link_match:
+            affiliate_link = link_match.group(1)
+        
+        def _make_facebook_post():
+            url = f"https://graph.facebook.com/v18.0/{facebook_page_id}/feed"
+            headers = {"Authorization": f"Bearer {facebook_access_token}"}
+            
+            # Format content for Facebook (max 5000 chars, supports links)
+            formatted_content = content[:5000]
+            if affiliate_link:
+                formatted_content = f"{formatted_content}\n\n{affiliate_link}"
+            
+            payload = {"message": formatted_content}
+            
+            resp = requests.post(url, json=payload, headers=headers, timeout=15)
+            
+            if resp.status_code in (200, 201):
+                data = resp.json() if resp.content else {}
+                post_id = data.get("id")
+                logger.info(f"✅ Posted to Facebook ({content_file.name}) post_id={post_id}")
+                self._mark_platform_success("facebook")
+                return True
+            elif resp.status_code == 190:
+                # Token expired or invalid
+                error_data = resp.json() if resp.content else {}
+                logger.error(f"Facebook token error (190): {error_data.get('error', {}).get('message', 'Token expired or invalid')}")
+                self._mark_platform_failed("facebook")
+                return False
+            elif resp.status_code == 506:
+                # Duplicate post
+                logger.info(f"Facebook duplicate post detected for {content_file.name} - skipping")
+                return True  # Treat as success
+            elif resp.status_code in (4, 17):
+                # Rate limit
+                error_data = resp.json() if resp.content else {}
+                logger.warning(f"Facebook rate limit (4/17): {error_data.get('error', {}).get('message', 'Rate limit exceeded')}")
+                raise Exception("Rate limit - will retry")
+            else:
+                error_data = resp.json() if resp.content else {}
+                error_msg = error_data.get('error', {}).get('message', resp.text[:200])
+                logger.error(f"Facebook post failed: HTTP {resp.status_code} - {error_msg}")
+                if resp.status_code in (401, 403):
+                    self._mark_platform_failed("facebook")
+                return False
+        
+        try:
+            return self._retry_api_call(_make_facebook_post, max_attempts=3, base_delay=2)
+        except Exception as e:
+            logger.error(f"Facebook post failed after retries: {e}")
+            return False
+    
     def _post_to_linkedin(self, content: str, content_file: Path) -> bool:
-        """Post content to LinkedIn (requires API keys)"""
+        """Post content to LinkedIn using API v2 (UGC Posts)"""
         linkedin_access_token = os.getenv('LINKEDIN_ACCESS_TOKEN')
+        linkedin_urn = os.getenv('LINKEDIN_URN')  # Optional: e.g., "urn:li:person:123456" or "urn:li:organization:123456"
         
         if not linkedin_access_token:
             logger.debug("LinkedIn access token not configured - skipping auto-post")
             return False
         
-        try:
-            # LinkedIn API posting would go here
-            logger.info(f"Would post to LinkedIn: {content[:50]}... (API integration ready)")
-            # TODO: Implement actual LinkedIn API call when token is available
-            return True
-        except Exception as e:
-            logger.error(f"LinkedIn post failed: {e}")
+        if not self._check_platform_status("linkedin"):
             return False
+        
+        # Extract affiliate link from content if present
+        affiliate_link = None
+        import re
+        link_match = re.search(r'\[Get it here: (https?://[^\]]+)\]', content)
+        if link_match:
+            affiliate_link = link_match.group(1)
+        
+        def _make_linkedin_post():
+            # First, get the user's URN if not provided
+            user_urn = linkedin_urn
+            if not user_urn:
+                # Try to get URN from profile
+                profile_url = "https://api.linkedin.com/v2/me"
+                headers = {
+                    "Authorization": f"Bearer {linkedin_access_token}",
+                    "X-Restli-Protocol-Version": "2.0.0"
+                }
+                profile_resp = requests.get(profile_url, headers=headers, timeout=15)
+                if profile_resp.status_code == 200:
+                    profile_data = profile_resp.json()
+                    user_urn = profile_data.get("id", "")
+                else:
+                    logger.error(f"LinkedIn: Failed to get user URN: HTTP {profile_resp.status_code}")
+                    return False
+            
+            if not user_urn:
+                logger.error("LinkedIn: User URN not available")
+                return False
+            
+            # Format content for LinkedIn (max 3000 chars, professional tone)
+            formatted_content = content[:3000]
+            if affiliate_link:
+                formatted_content = f"{formatted_content}\n\n{affiliate_link}"
+            
+            # Create UGC Post
+            url = "https://api.linkedin.com/v2/ugcPosts"
+            headers = {
+                "Authorization": f"Bearer {linkedin_access_token}",
+                "X-Restli-Protocol-Version": "2.0.0",
+                "Content-Type": "application/json"
+            }
+            
+            # LinkedIn UGC Post structure
+            payload = {
+                "author": user_urn,
+                "lifecycleState": "PUBLISHED",
+                "specificContent": {
+                    "com.linkedin.ugc.ShareContent": {
+                        "shareCommentary": {
+                            "text": formatted_content
+                        },
+                        "shareMediaCategory": "NONE"
+                    }
+                },
+                "visibility": {
+                    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+                }
+            }
+            
+            resp = requests.post(url, json=payload, headers=headers, timeout=15)
+            
+            if resp.status_code in (200, 201):
+                data = resp.json() if resp.content else {}
+                post_id = data.get("id", "")
+                logger.info(f"✅ Posted to LinkedIn ({content_file.name}) post_id={post_id}")
+                self._mark_platform_success("linkedin")
+                return True
+            elif resp.status_code == 401:
+                logger.error(f"LinkedIn token expired (401): {resp.text[:200]}")
+                self._mark_platform_failed("linkedin")
+                return False
+            elif resp.status_code == 403:
+                logger.error(f"LinkedIn permission denied (403): {resp.text[:200]}")
+                self._mark_platform_failed("linkedin")
+                return False
+            elif resp.status_code == 429:
+                error_data = resp.json() if resp.content else {}
+                logger.warning(f"LinkedIn rate limit (429): {error_data.get('message', 'Rate limit exceeded')}")
+                raise Exception("Rate limit - will retry")
+            else:
+                error_data = resp.json() if resp.content else {}
+                error_msg = error_data.get('message', resp.text[:200])
+                logger.error(f"LinkedIn post failed: HTTP {resp.status_code} - {error_msg}")
+                if resp.status_code in (401, 403):
+                    self._mark_platform_failed("linkedin")
+                return False
+        
+        try:
+            return self._retry_api_call(_make_linkedin_post, max_attempts=3, base_delay=2)
+        except Exception as e:
+            logger.error(f"LinkedIn post failed after retries: {e}")
+            return False
+
+
+# ============================================
+# VIRAL TEMPLATE MANAGER
+# ============================================
+class ViralTemplateManager:
+    """Manages viral content templates for enhanced engagement"""
+    
+    def __init__(self, templates_dir: Path = Path("./products/viral_templates")):
+        self.templates_dir = templates_dir
+        self.templates_dir.mkdir(parents=True, exist_ok=True)
+        self.templates_cache = {}
+        self.load_templates()
+        self.used_templates = set()  # Track used templates to avoid repetition
+    
+    def load_templates(self):
+        """Load viral templates from JSON files"""
+        try:
+            templates_file = self.templates_dir / "templates.json"
+            if templates_file.exists():
+                with open(templates_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    self.templates_cache = data.get("templates", {})
+            else:
+                # Initialize with default templates
+                self._create_default_templates()
+                self.load_templates()
+        except Exception as e:
+            import logging
+            logging.warning(f"Error loading viral templates: {e}")
+            self._create_default_templates()
+    
+    def _create_default_templates(self):
+        """Create default viral templates based on proven formats"""
+        default_templates = {
+            "templates": {
+                "thread_entrepreneur_001": {
+                    "id": "thread_entrepreneur_001",
+                    "category": "entrepreneur",
+                    "platform": "twitter",
+                    "type": "thread",
+                    "template": "🔥 {HOOK}\n\n💡 {POINT_1}\n\n💡 {POINT_2}\n\n💡 {POINT_3}\n\n🚀 {CTA}",
+                    "variables": {
+                        "HOOK": "The #1 mistake entrepreneurs make...",
+                        "POINT_1": "They focus on perfection instead of shipping",
+                        "POINT_2": "They build in a vacuum without market feedback",
+                        "POINT_3": "They wait for the 'perfect' time to launch",
+                        "CTA": "{AFFILIATE_LINK}"
+                    },
+                    "tags": ["entrepreneurship", "business", "startup"]
+                },
+                "thread_passive_income_001": {
+                    "id": "thread_passive_income_001",
+                    "category": "passiveincome",
+                    "platform": "twitter",
+                    "type": "thread",
+                    "template": "💰 {HOOK}\n\n📊 {POINT_1}\n\n📈 {POINT_2}\n\n💎 {POINT_3}\n\n🔗 {CTA}",
+                    "variables": {
+                        "HOOK": "7 passive income streams that changed my life:",
+                        "POINT_1": "Digital products (no inventory, instant delivery)",
+                        "POINT_2": "Affiliate marketing (earn while you sleep)",
+                        "POINT_3": "Automated services (scale without you)",
+                        "CTA": "{AFFILIATE_LINK}"
+                    },
+                    "tags": ["passiveincome", "money", "wealth"]
+                },
+                "post_linkedin_001": {
+                    "id": "post_linkedin_001",
+                    "category": "business",
+                    "platform": "linkedin",
+                    "type": "post",
+                    "template": "{HOOK}\n\n{POINT_1}\n\n{POINT_2}\n\n{CTA}",
+                    "variables": {
+                        "HOOK": "The biggest lesson I learned building a 6-figure business:",
+                        "POINT_1": "Focus on ONE thing and master it completely",
+                        "POINT_2": "Then scale it systematically before adding complexity",
+                        "CTA": "{AFFILIATE_LINK}"
+                    },
+                    "tags": ["business", "success", "entrepreneurship"]
+                },
+                "thread_business_001": {
+                    "id": "thread_business_001",
+                    "category": "business",
+                    "platform": "twitter",
+                    "type": "thread",
+                    "template": "⚡ {HOOK}\n\n1️⃣ {POINT_1}\n2️⃣ {POINT_2}\n3️⃣ {POINT_3}\n\n👇 {CTA}",
+                    "variables": {
+                        "HOOK": "3 business principles that doubled my revenue:",
+                        "POINT_1": "Value first, profit follows",
+                        "POINT_2": "Build systems, not just products",
+                        "POINT_3": "Serve one niche exceptionally well",
+                        "CTA": "{AFFILIATE_LINK}"
+                    },
+                    "tags": ["business", "revenue", "growth"]
+                }
+            }
+        }
+        
+        templates_file = self.templates_dir / "templates.json"
+        with open(templates_file, 'w', encoding='utf-8') as f:
+            json.dump(default_templates, f, indent=2, ensure_ascii=False)
+        
+        import logging
+        logging.info(f"Created default viral templates in {templates_file}")
+    
+    def get_template(self, category: str = None, platform: str = None, topic: str = None) -> Optional[Dict[str, Any]]:
+        """Get a viral template matching criteria"""
+        available = []
+        
+        for template_id, template in self.templates_cache.items():
+            # Match category
+            if category and template.get("category") != category:
+                continue
+            # Match platform
+            if platform and template.get("platform") != platform.lower():
+                continue
+            # Match topic/tags
+            if topic:
+                tags = template.get("tags", [])
+                if topic.lower() not in [t.lower() for t in tags]:
+                    continue
+            # Skip if recently used
+            if template_id not in self.used_templates:
+                available.append((template_id, template))
+        
+        if not available:
+            # Reset used templates if all have been used
+            self.used_templates.clear()
+            available = [(tid, t) for tid, t in self.templates_cache.items()]
+        
+        if available:
+            template_id, template = random.choice(available)
+            self.used_templates.add(template_id)
+            return template
+        
+        return None
+    
+    def generate_viral_content(self, template: Dict[str, Any], variables: Dict[str, str] = None, affiliate_link: str = None) -> str:
+        """Generate viral content from template"""
+        if not template:
+            return ""
+        
+        content = template.get("template", "")
+        default_vars = template.get("variables", {})
+        
+        # Merge variables
+        final_vars = {**default_vars}
+        if variables:
+            final_vars.update(variables)
+        
+        # Replace affiliate link placeholder
+        if affiliate_link:
+            final_vars["AFFILIATE_LINK"] = affiliate_link
+            # Also replace in CTA
+            if "{CTA}" in content and "CTA" in final_vars:
+                cta = final_vars["CTA"]
+                if "{AFFILIATE_LINK}" in cta:
+                    final_vars["CTA"] = cta.replace("{AFFILIATE_LINK}", affiliate_link)
+        
+        # Replace all variables
+        for key, value in final_vars.items():
+            content = content.replace(f"{{{key}}}", str(value))
+        
+        return content
+    
+    def generate_for_topic(self, topic: str, platform: str, affiliate_link: str = None) -> str:
+        """Generate viral content for a specific topic and platform"""
+        # Map topic to category
+        category_map = {
+            "entrepreneur": "entrepreneur",
+            "business": "business",
+            "passiveincome": "passiveincome",
+            "wealth": "passiveincome",
+            "startup": "entrepreneur"
+        }
+        
+        category = category_map.get(topic.lower(), "business")
+        
+        template = self.get_template(category=category, platform=platform, topic=topic)
+        if template:
+            return self.generate_viral_content(template, affiliate_link=affiliate_link)
+        
+        return ""
 
 
 # ============================================
@@ -2101,7 +2761,8 @@ class CashEngine:
         self.template_generator = TemplateGenerator(self.conn)
         self.lead_bot = LeadBot(self.conn, os.getenv('MARKETING_AGENT_URL', 'http://localhost:9000'))
         self.affiliate_manager = AffiliateManager(os.getenv('MARKETING_AGENT_URL', 'http://localhost:9000'))
-        self.content_syndicator = ContentSyndicator(self.affiliate_manager)
+        self.viral_template_manager = ViralTemplateManager() if os.getenv('VIRAL_TEMPLATES_ENABLED', 'true').lower() == 'true' else None
+        self.content_syndicator = ContentSyndicator(self.affiliate_manager, viral_template_manager=self.viral_template_manager)
         
         # Template optimization components
         self.template_ab_testing = TemplateABTesting(self.conn)
@@ -2621,6 +3282,28 @@ class CashEngine:
                     self.revenue_tracker.track_content_performance(
                         content_file.name, "syndicated", clicks=0, conversions=0, revenue=0.0
                     )
+
+            # Optional: auto-distribute to social platforms (phased rollout)
+            if os.getenv("AUTO_DISTRIBUTE_CONTENT", "false").lower() in ("1", "true", "yes", "on"):
+                platforms_env = os.getenv("DISTRIBUTION_PLATFORMS", "")
+                if platforms_env:
+                    platforms = [p.strip() for p in platforms_env.split(",") if p.strip()]
+                else:
+                    # Default: Facebook and LinkedIn if Twitter is disabled
+                    twitter_enabled = os.getenv("TWITTER_LIVE_POSTING", "false").lower() in ("1", "true", "yes", "on")
+                    if twitter_enabled:
+                        platforms = ["twitter", "facebook", "linkedin"]
+                    else:
+                        platforms = ["facebook", "linkedin"]
+                for content_file in self.content_syndicator.products_dir.glob("*.md"):
+                    results = self.content_syndicator.auto_distribute_to_platforms(content_file, platforms=platforms)
+                    if results:
+                        ok = [k for k, v in results.items() if v]
+                        fail = [k for k, v in results.items() if not v]
+                        if ok:
+                            logger.info(f"✅ Posted {content_file.name} to: {', '.join(ok)}")
+                        if fail:
+                            logger.info(f"⚠️ Skipped/failed posting {content_file.name} to: {', '.join(fail)}")
             
             # Content syndication generates revenue through affiliate commissions
             # when users click affiliate links in syndicated content
