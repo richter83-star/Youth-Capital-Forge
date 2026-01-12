@@ -1,0 +1,173 @@
+{
+  "timestamp": "2026-01-12T03:05:12.942657",
+  "period_days": 3,
+  "metrics": {
+    "period_days": 3,
+    "start_date": "2026-01-09T03:04:58.764074",
+    "end_date": "2026-01-12T03:04:58.764074",
+    "revenue": {
+      "entries": 0,
+      "total": 0.0,
+      "average_per_entry": 0.0,
+      "daily_average": 0.0
+    },
+    "content": {
+      "entries": 3825,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "avg_clicks_per_entry": 0.0,
+      "conversion_rate": 0.0
+    },
+    "campaigns": {
+      "entries": 11167,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_commissions": 0.0,
+      "conversion_rate": 0.0
+    },
+    "leads": {
+      "total": 1,
+      "converted": 0,
+      "conversion_rate": 0.0
+    },
+    "products": {
+      "total": 81,
+      "total_sales": 0,
+      "total_revenue": 0.0
+    },
+    "targets": {
+      "monthly": 10000.0,
+      "daily": 333.3333333333333,
+      "period": 1000.0,
+      "revenue_achievement_pct": 0.0
+    }
+  },
+  "issues": [
+    {
+      "type": "revenue",
+      "severity": "critical",
+      "description": "Revenue critically low: $0.00 vs target $1000.00 (0.0%)",
+      "impact": "high"
+    },
+    {
+      "type": "content_engagement",
+      "severity": "critical",
+      "description": "Zero clicks on 3825 content entries - content not reaching audience",
+      "impact": "high"
+    },
+    {
+      "type": "campaign_engagement",
+      "severity": "critical",
+      "description": "Zero clicks on 11167 campaign entries - affiliate links not working",
+      "impact": "high"
+    }
+  ],
+  "diagnosis": {
+    "root_causes": [
+      {
+        "issue": "revenue",
+        "cause": "No sales from products and no clicks on affiliate links"
+      },
+      {
+        "issue": "content_engagement",
+        "cause": "Content syndication failed on Twitter, reducing the potential audience reach"
+      },
+      {
+        "issue": "campaign_engagement",
+        "cause": "Affiliate links may not be functioning or visible to users"
+      }
+    ],
+    "fixes": [
+      {
+        "priority": 1,
+        "action": "Fix content syndication on Twitter",
+        "expected_impact": "Increase in content reach and potential clicks",
+        "implementation_steps": [
+          "Investigate the issue with Twitter API or posting window",
+          "Implement a fix or workaround",
+          "Test content syndication to Twitter",
+          "Monitor the number of content syndications and clicks"
+        ]
+      },
+      {
+        "priority": 2,
+        "action": "Check functionality and visibility of affiliate links",
+        "expected_impact": "Increase in campaign clicks and potential revenue",
+        "implementation_steps": [
+          "Verify that affiliate links are correctly embedded in content",
+          "Test the functionality of affiliate links",
+          "Ensure that affiliate links are visible and enticing to users",
+          "Monitor the number of campaign clicks and conversions"
+        ]
+      },
+      {
+        "priority": 3,
+        "action": "Improve product visibility and attractiveness",
+        "expected_impact": "Increase in product sales and revenue",
+        "implementation_steps": [
+          "Evaluate the visibility and attractiveness of products on the platform",
+          "Implement changes to improve product listings, such as better descriptions or images",
+          "Consider promotional strategies, such as discounts or featured listings",
+          "Monitor the number of product views, sales, and revenue"
+        ]
+      }
+    ],
+    "method": "ai"
+  },
+  "fixes_implemented": {
+    "implemented": [
+      {
+        "fix": {
+          "priority": 2,
+          "action": "Check functionality and visibility of affiliate links",
+          "expected_impact": "Increase in campaign clicks and potential revenue",
+          "implementation_steps": [
+            "Verify that affiliate links are correctly embedded in content",
+            "Test the functionality of affiliate links",
+            "Ensure that affiliate links are visible and enticing to users",
+            "Monitor the number of campaign clicks and conversions"
+          ]
+        },
+        "result": {
+          "success": true,
+          "marketing_agent_available": false,
+          "campaigns_accessible": false,
+          "message": "Marketing Agent: unavailable"
+        }
+      }
+    ],
+    "failed": [],
+    "skipped": [
+      {
+        "fix": {
+          "priority": 1,
+          "action": "Fix content syndication on Twitter",
+          "expected_impact": "Increase in content reach and potential clicks",
+          "implementation_steps": [
+            "Investigate the issue with Twitter API or posting window",
+            "Implement a fix or workaround",
+            "Test content syndication to Twitter",
+            "Monitor the number of content syndications and clicks"
+          ]
+        },
+        "reason": "No implementation available"
+      },
+      {
+        "fix": {
+          "priority": 3,
+          "action": "Improve product visibility and attractiveness",
+          "expected_impact": "Increase in product sales and revenue",
+          "implementation_steps": [
+            "Evaluate the visibility and attractiveness of products on the platform",
+            "Implement changes to improve product listings, such as better descriptions or images",
+            "Consider promotional strategies, such as discounts or featured listings",
+            "Monitor the number of product views, sales, and revenue"
+          ]
+        },
+        "reason": "No implementation available"
+      }
+    ]
+  },
+  "needs_correction": true
+}

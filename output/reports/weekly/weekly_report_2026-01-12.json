@@ -1,0 +1,2855 @@
+{
+  "timestamp": "2026-01-12T03:22:29.167629",
+  "period_days": 7,
+  "data": {
+    "period_days": 7,
+    "start_date": "2026-01-05T03:22:07.266180",
+    "end_date": "2026-01-12T03:22:07.266180",
+    "revenue": {
+      "entries": 0,
+      "total": 0.0,
+      "average": 0.0,
+      "first_transaction": null,
+      "last_transaction": null
+    },
+    "revenue_by_source": {},
+    "content_entries": [
+      {
+        "content_file": "HUSTLE.md",
+        "platform": "syndicated",
+        "clicks": 0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07"
+      },
+      {
+        "content_file": "PROMPTS.md",
+        "platform": "syndicated",
+        "clicks": 0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07"
+      },
+      {
+        "content_file": "TEMPLATE.md",
+        "platform": "syndicated",
+        "clicks": 0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07"
+      }
+    ],
+    "campaign_entries": [
+      {
+        "campaign_id": "10",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52"
+      },
+      {
+        "campaign_id": "100",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "101",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "102",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "103",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "104",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "105",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "106",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "107",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "108",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "109",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "11",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52"
+      },
+      {
+        "campaign_id": "110",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "111",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "112",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "113",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "114",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "115",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "116",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "117",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "118",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "119",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "12",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52"
+      },
+      {
+        "campaign_id": "120",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "121",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "122",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "123",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "124",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "125",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "126",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "127",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "128",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "129",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "13",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52"
+      },
+      {
+        "campaign_id": "130",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "131",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "132",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "133",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "134",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "135",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "136",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "137",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "138",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "139",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "14",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23"
+      },
+      {
+        "campaign_id": "140",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "141",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "142",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "143",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "144",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "145",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "146",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "147",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "148",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "149",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "15",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23"
+      },
+      {
+        "campaign_id": "150",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "151",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "152",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "153",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "154",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "155",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "156",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "157",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "158",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "159",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "16",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23"
+      },
+      {
+        "campaign_id": "160",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "161",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "162",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "163",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "164",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "165",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "166",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "167",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "168",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "169",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "17",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23"
+      },
+      {
+        "campaign_id": "170",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "171",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "172",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "173",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "174",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "175",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "176",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "177",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "178",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "179",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "18",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "180",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "181",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "182",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "183",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "184",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00"
+      },
+      {
+        "campaign_id": "185",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00"
+      },
+      {
+        "campaign_id": "186",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00"
+      },
+      {
+        "campaign_id": "187",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00"
+      },
+      {
+        "campaign_id": "188",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00"
+      },
+      {
+        "campaign_id": "19",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "20",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "21",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55"
+      },
+      {
+        "campaign_id": "22",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04"
+      },
+      {
+        "campaign_id": "23",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04"
+      },
+      {
+        "campaign_id": "24",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04"
+      },
+      {
+        "campaign_id": "25",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04"
+      },
+      {
+        "campaign_id": "26",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "27",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "28",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "29",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "30",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "31",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "32",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "33",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07"
+      },
+      {
+        "campaign_id": "34",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "35",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "36",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "37",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43"
+      },
+      {
+        "campaign_id": "38",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "39",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "40",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "41",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03"
+      },
+      {
+        "campaign_id": "42",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "43",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "44",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "45",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57"
+      },
+      {
+        "campaign_id": "46",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "47",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "48",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "49",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14"
+      },
+      {
+        "campaign_id": "50",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "51",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "52",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "53",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51"
+      },
+      {
+        "campaign_id": "54",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "55",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "56",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "57",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42"
+      },
+      {
+        "campaign_id": "58",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "59",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "60",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "61",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06"
+      },
+      {
+        "campaign_id": "62",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "63",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "64",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "65",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35"
+      },
+      {
+        "campaign_id": "66",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "67",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "68",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "69",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15"
+      },
+      {
+        "campaign_id": "70",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "71",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "72",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "73",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16"
+      },
+      {
+        "campaign_id": "74",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03"
+      },
+      {
+        "campaign_id": "75",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03"
+      },
+      {
+        "campaign_id": "76",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03"
+      },
+      {
+        "campaign_id": "77",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03"
+      },
+      {
+        "campaign_id": "78",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "79",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "80",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "81",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "82",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "83",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "84",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "85",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28"
+      },
+      {
+        "campaign_id": "86",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "87",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "88",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "89",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15"
+      },
+      {
+        "campaign_id": "90",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "91",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "92",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "93",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39"
+      },
+      {
+        "campaign_id": "94",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39"
+      },
+      {
+        "campaign_id": "95",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39"
+      },
+      {
+        "campaign_id": "96",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39"
+      },
+      {
+        "campaign_id": "97",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39"
+      },
+      {
+        "campaign_id": "98",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39"
+      },
+      {
+        "campaign_id": "99",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      }
+    ],
+    "leads": {
+      "total": 1,
+      "converted": 0,
+      "conversion_rate": 0.0
+    },
+    "products": {
+      "total": 81,
+      "total_sales": 0,
+      "total_revenue": 0.0
+    },
+    "targets": {
+      "monthly": 10000.0,
+      "daily": 333.3333333333333,
+      "weekly": 2333.333333333333,
+      "achievement_pct": 0.0
+    }
+  },
+  "successes": {
+    "top_content": [
+      {
+        "content_file": "HUSTLE.md",
+        "platform": "syndicated",
+        "clicks": 0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07"
+      },
+      {
+        "content_file": "PROMPTS.md",
+        "platform": "syndicated",
+        "clicks": 0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07"
+      },
+      {
+        "content_file": "TEMPLATE.md",
+        "platform": "syndicated",
+        "clicks": 0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07"
+      }
+    ],
+    "top_campaigns": [
+      {
+        "campaign_id": "10",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52"
+      },
+      {
+        "campaign_id": "100",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "101",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "102",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "103",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30"
+      },
+      {
+        "campaign_id": "104",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "105",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "106",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "107",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      },
+      {
+        "campaign_id": "108",
+        "clicks": 0,
+        "conversions": 0,
+        "commissions": 0.0,
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36"
+      }
+    ],
+    "top_platforms": {
+      "syndicated": {
+        "clicks": 0,
+        "conversions": 0,
+        "revenue": 0.0,
+        "count": 3
+      }
+    },
+    "top_products": [],
+    "success_patterns": []
+  },
+  "failures": {
+    "zero_engagement_content": [
+      {
+        "content_file": "HUSTLE.md",
+        "platform": "syndicated",
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07",
+        "why_it_failed": "Tracked 2087 times with zero engagement; Platform: syndicated"
+      },
+      {
+        "content_file": "PROMPTS.md",
+        "platform": "syndicated",
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07",
+        "why_it_failed": "Tracked 2087 times with zero engagement; Platform: syndicated"
+      },
+      {
+        "content_file": "TEMPLATE.md",
+        "platform": "syndicated",
+        "entry_count": 2087,
+        "last_date": "2026-01-12 10:32:07",
+        "why_it_failed": "Tracked 2087 times with zero engagement; Platform: syndicated"
+      }
+    ],
+    "zero_engagement_campaigns": [
+      {
+        "campaign_id": "10",
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "100",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "101",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "102",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "103",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "104",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "105",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "106",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "107",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "108",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "109",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "11",
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "110",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "111",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "112",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "113",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "114",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "115",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "116",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "117",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "118",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "119",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "12",
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "120",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "121",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "122",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "123",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "124",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "125",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "126",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "127",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "128",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "129",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "13",
+        "entry_count": 1,
+        "last_date": "2026-01-05 22:59:52",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "130",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "131",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "132",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "133",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "134",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "135",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "136",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "137",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "138",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "139",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "14",
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23",
+        "why_it_failed": "Tracked 2 times with zero engagement"
+      },
+      {
+        "campaign_id": "140",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "141",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "142",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "143",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "144",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "145",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "146",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "147",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "148",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "149",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "15",
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23",
+        "why_it_failed": "Tracked 2 times with zero engagement"
+      },
+      {
+        "campaign_id": "150",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "151",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "152",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "153",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "154",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "155",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "156",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "157",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "158",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "159",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "16",
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23",
+        "why_it_failed": "Tracked 2 times with zero engagement"
+      },
+      {
+        "campaign_id": "160",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "161",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "162",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "163",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "164",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "165",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "166",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "167",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "168",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "169",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "17",
+        "entry_count": 2,
+        "last_date": "2026-01-06 00:13:23",
+        "why_it_failed": "Tracked 2 times with zero engagement"
+      },
+      {
+        "campaign_id": "170",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "171",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "172",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "173",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "174",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "175",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "176",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "177",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "178",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "179",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "18",
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 144 times with zero engagement"
+      },
+      {
+        "campaign_id": "180",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "181",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "182",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "183",
+        "entry_count": 70,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 70 times with zero engagement"
+      },
+      {
+        "campaign_id": "184",
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "185",
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "186",
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "187",
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "188",
+        "entry_count": 1,
+        "last_date": "2026-01-12 10:32:00",
+        "why_it_failed": "Tracked 1 times with zero engagement"
+      },
+      {
+        "campaign_id": "19",
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 144 times with zero engagement"
+      },
+      {
+        "campaign_id": "20",
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 144 times with zero engagement"
+      },
+      {
+        "campaign_id": "21",
+        "entry_count": 144,
+        "last_date": "2026-01-12 01:32:55",
+        "why_it_failed": "Tracked 144 times with zero engagement"
+      },
+      {
+        "campaign_id": "22",
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04",
+        "why_it_failed": "Tracked 16 times with zero engagement"
+      },
+      {
+        "campaign_id": "23",
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04",
+        "why_it_failed": "Tracked 16 times with zero engagement"
+      },
+      {
+        "campaign_id": "24",
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04",
+        "why_it_failed": "Tracked 16 times with zero engagement"
+      },
+      {
+        "campaign_id": "25",
+        "entry_count": 16,
+        "last_date": "2026-01-06 17:57:04",
+        "why_it_failed": "Tracked 16 times with zero engagement"
+      },
+      {
+        "campaign_id": "26",
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 143 times with zero engagement"
+      },
+      {
+        "campaign_id": "27",
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 143 times with zero engagement"
+      },
+      {
+        "campaign_id": "28",
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 143 times with zero engagement"
+      },
+      {
+        "campaign_id": "29",
+        "entry_count": 143,
+        "last_date": "2026-01-12 01:31:36",
+        "why_it_failed": "Tracked 143 times with zero engagement"
+      },
+      {
+        "campaign_id": "30",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "31",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "32",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "33",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:10:07",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "34",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "35",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "36",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "37",
+        "entry_count": 123,
+        "last_date": "2026-01-12 01:13:43",
+        "why_it_failed": "Tracked 123 times with zero engagement"
+      },
+      {
+        "campaign_id": "38",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "39",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "40",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "41",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:41:03",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "42",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "43",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "44",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "45",
+        "entry_count": 121,
+        "last_date": "2026-01-12 01:42:57",
+        "why_it_failed": "Tracked 121 times with zero engagement"
+      },
+      {
+        "campaign_id": "46",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "47",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "48",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "49",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:14",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "50",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "51",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "52",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "53",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:44:51",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "54",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "55",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "56",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "57",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:48:42",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "58",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "59",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "60",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "61",
+        "entry_count": 115,
+        "last_date": "2026-01-12 01:49:06",
+        "why_it_failed": "Tracked 115 times with zero engagement"
+      },
+      {
+        "campaign_id": "62",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "63",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "64",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "65",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:01:35",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "66",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "67",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "68",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "69",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:15",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "70",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "71",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "72",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "73",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:02:16",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "74",
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03",
+        "why_it_failed": "Tracked 8 times with zero engagement"
+      },
+      {
+        "campaign_id": "75",
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03",
+        "why_it_failed": "Tracked 8 times with zero engagement"
+      },
+      {
+        "campaign_id": "76",
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03",
+        "why_it_failed": "Tracked 8 times with zero engagement"
+      },
+      {
+        "campaign_id": "77",
+        "entry_count": 8,
+        "last_date": "2026-01-07 15:23:03",
+        "why_it_failed": "Tracked 8 times with zero engagement"
+      },
+      {
+        "campaign_id": "78",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "79",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "80",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "81",
+        "entry_count": 114,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 114 times with zero engagement"
+      },
+      {
+        "campaign_id": "82",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "83",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "84",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "85",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:06:28",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "86",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "87",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "88",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "89",
+        "entry_count": 113,
+        "last_date": "2026-01-12 01:07:15",
+        "why_it_failed": "Tracked 113 times with zero engagement"
+      },
+      {
+        "campaign_id": "90",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "91",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "92",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "93",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:13:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "94",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "95",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "96",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "97",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "98",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:27:39",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      },
+      {
+        "campaign_id": "99",
+        "entry_count": 71,
+        "last_date": "2026-01-12 01:29:30",
+        "why_it_failed": "Tracked 71 times with zero engagement"
+      }
+    ],
+    "underperforming_platforms": {
+      "syndicated": 3
+    },
+    "zero_sales_products": [],
+    "failure_patterns": [
+      {
+        "type": "content_engagement",
+        "count": 3,
+        "common_issue": "Content not reaching audience or tracking broken",
+        "likely_causes": [
+          "Posts not actually being published",
+          "Platform API issues",
+          "Tracking system not recording clicks",
+          "Content not visible to audience"
+        ]
+      },
+      {
+        "type": "campaign_engagement",
+        "count": 179,
+        "common_issue": "Affiliate links not working or not being clicked",
+        "likely_causes": [
+          "Marketing Agent V2 not tracking",
+          "Links not properly embedded",
+          "Links pointing to wrong URLs",
+          "Tracking system down"
+        ]
+      }
+    ]
+  },
+  "actions": {
+    "automatic_improvements": [
+      {
+        "action": "AI Course Correction runs every 6 hours",
+        "purpose": "Automatically diagnose and fix performance issues",
+        "expected_impact": "Maintain optimal performance"
+      },
+      {
+        "action": "Smart Cleanup System runs with course correction",
+        "purpose": "Remove dead entries, keep what works",
+        "expected_impact": "Clean database, learn from success"
+      }
+    ],
+    "scheduled_optimizations": [
+      {
+        "action": "Content syndication every 1 hour",
+        "purpose": "Distribute content to platforms",
+        "frequency": "Hourly"
+      },
+      {
+        "action": "Lead generation every 3 hours",
+        "purpose": "Extract and qualify leads",
+        "frequency": "Every 3 hours"
+      },
+      {
+        "action": "Product sync every 6 hours",
+        "purpose": "Sync Shopify products to database",
+        "frequency": "Every 6 hours"
+      }
+    ],
+    "strategy_adjustments": [
+      {
+        "action": "Focus on platforms with engagement",
+        "reason": "3 content entries with zero engagement",
+        "adjustment": "Prioritize platforms showing results"
+      },
+      {
+        "action": "Review product strategy",
+        "reason": "Zero product sales this week",
+        "adjustment": "Consider pricing, promotion, or product changes"
+      }
+    ],
+    "platform_focus_shifts": [
+      {
+        "action": "Increase focus on syndicated",
+        "reason": "Top performing platform this week",
+        "adjustment": "Allocate more resources to this platform"
+      }
+    ]
+  },
+  "recommendations": {
+    "critical_issues": [
+      {
+        "title": "Zero Engagement with Content and Campaigns",
+        "description": "All the content and campaigns have zero engagement. This indicates either a problem with the content/campaigns themselves, or with the tracking system.",
+        "impact": "high",
+        "action_required": "Investigate and resolve the issues with the tracking system. If the system is working correctly, review the content and campaigns for quality and relevance."
+      },
+      {
+        "title": "No Sales Despite Product Availability",
+        "description": "There are 81 products available, but no sales. This indicates a problem with the product visibility, pricing, or marketing strategy.",
+        "impact": "high",
+        "action_required": "Review the product visibility on the platform, pricing strategy, and marketing efforts. Consider running promotions or discounts to attract customers."
+      }
+    ],
+    "missed_opportunities": [
+      {
+        "title": "Lack of Diversified Revenue Streams",
+        "description": "The business is solely relying on direct sales, with no other revenue streams.",
+        "impact": "medium",
+        "action_required": "Explore other revenue streams such as affiliate marketing, partnerships, or subscriptions."
+      }
+    ],
+    "blind_spots": [
+      {
+        "title": "Low Lead Conversion",
+        "description": "There is only one lead, and it did not convert. This indicates a problem with the lead generation or conversion strategy.",
+        "impact": "medium",
+        "action_required": "Review the lead generation strategy and improve the conversion process. Consider offering incentives or personalized follow-ups."
+      }
+    ],
+    "quick_wins": [
+      {
+        "title": "Optimize Content and Campaigns",
+        "description": "The current content and campaigns are not engaging. Improving them could lead to quick wins.",
+        "impact": "high",
+        "action_required": "Review the content and campaigns, and make them more engaging and relevant. Use data to understand what resonates with the audience."
+      }
+    ],
+    "strategic_risks": [
+      {
+        "title": "Reliance on a Single Revenue Generation System",
+        "description": "The business is heavily reliant on a single revenue generation system. If it fails, the business could suffer significant losses.",
+        "impact": "high",
+        "action_required": "Diversify the revenue generation systems to reduce risk."
+      }
+    ],
+    "long_term_strategy": [
+      {
+        "title": "Invest in Data Analytics",
+        "description": "The business lacks a data-driven approach to understand what works and what doesn't. Investing in data analytics could provide valuable insights.",
+        "impact": "high",
+        "action_required": "Invest in a data analytics tool or hire a data analyst. Use the insights to improve the business strategy."
+      }
+    ],
+    "method": "ai"
+  }
+}

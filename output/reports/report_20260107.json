@@ -1,0 +1,576 @@
+{
+  "date": "2026-01-07T23:56:50.603123",
+  "total_revenue": 0.0,
+  "by_source": {},
+  "content_performance": [
+    {
+      "content_file": "HUSTLE.md",
+      "platform": "syndicated",
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0
+    },
+    {
+      "content_file": "PROMPTS.md",
+      "platform": "syndicated",
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0
+    },
+    {
+      "content_file": "TEMPLATE.md",
+      "platform": "syndicated",
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0
+    }
+  ],
+  "campaign_performance": [
+    {
+      "campaign_id": "89",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "88",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "87",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "86",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "85",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "84",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "83",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "82",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "81",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "80",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "79",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "78",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "77",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "76",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "75",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "74",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "73",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "72",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "71",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "70",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "69",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "68",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "67",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "66",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "65",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "64",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "63",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "62",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "61",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "60",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "59",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "58",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "57",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "56",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "55",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "54",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "53",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "52",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "51",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "50",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "49",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "48",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "47",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "46",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "45",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "44",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "43",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "42",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "41",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "40",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "39",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "38",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "37",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "36",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "35",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "34",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "33",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "32",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "31",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "30",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "29",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "28",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "27",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "26",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "21",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "20",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "19",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    },
+    {
+      "campaign_id": "18",
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_conversions": 0,
+      "total_revenue": 0.0,
+      "total_commissions": 0.0
+    }
+  ],
+  "daily_target": 333.3333333333333,
+  "target_met": false
+}

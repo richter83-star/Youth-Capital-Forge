@@ -41,6 +41,21 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Import AI Course Corrector
+try:
+    from ai_course_corrector import AICourseCorrector
+    COURSE_CORRECTION_AVAILABLE = True
+except ImportError:
+    COURSE_CORRECTION_AVAILABLE = False
+    logger = None  # Will be set up later
+
+# Import Weekly Report Generator
+try:
+    from weekly_report_generator import WeeklyReportGenerator
+    WEEKLY_REPORT_AVAILABLE = True
+except ImportError:
+    WEEKLY_REPORT_AVAILABLE = False
+
 # Optional dependencies - wrap in try/except
 try:
     import telebot
@@ -306,42 +321,48 @@ class RevenueTracker:
     
     def record_revenue(self, source: str, amount: float, currency: str = "USD", description: str = ""):
         """Record revenue transaction"""
-        self.cursor.execute('''
+        db = self._get_db()
+        cursor = db.cursor()
+        cursor.execute('''
             INSERT INTO revenue (source, amount, currency, description, status)
             VALUES (?, ?, ?, ?, ?)
         ''', (source, amount, currency, description, "completed"))
-        self.db.commit()
+        db.commit()
     
     def get_total_revenue(self, days: int = 30) -> float:
         """Get total revenue for specified days"""
         cutoff = datetime.now() - timedelta(days=days)
-        self.cursor.execute('''
+        cursor = self._get_cursor()
+        cursor.execute('''
             SELECT SUM(amount) FROM revenue 
             WHERE timestamp >= ? AND status = 'completed'
         ''', (cutoff,))
-        result = self.cursor.fetchone()
+        result = cursor.fetchone()
         return result[0] or 0.0
     
     def get_revenue_by_source(self, days: int = 30) -> Dict[str, float]:
         """Get revenue breakdown by source"""
         cutoff = datetime.now() - timedelta(days=days)
-        self.cursor.execute('''
+        cursor = self._get_cursor()
+        cursor.execute('''
             SELECT source, SUM(amount) FROM revenue 
             WHERE timestamp >= ? AND status = 'completed'
             GROUP BY source
         ''', (cutoff,))
-        return {row[0]: row[1] for row in self.cursor.fetchall()}
+        return {row[0]: row[1] for row in cursor.fetchall()}
     
     def track_performance_metric(self, metric_type: str, metric_name: str, value: float, 
                                  source: str = "", metadata: Optional[Dict] = None):
         """Track a performance metric for analytics"""
         try:
             metadata_json = json.dumps(metadata) if metadata else None
-            self.cursor.execute('''
+            db = self._get_db()
+            cursor = db.cursor()
+            cursor.execute('''
                 INSERT INTO performance_metrics (metric_type, metric_name, value, source, metadata)
                 VALUES (?, ?, ?, ?, ?)
             ''', (metric_type, metric_name, value, source, metadata_json))
-            self.db.commit()
+            db.commit()
         except Exception as e:
             logger.error(f"Error tracking metric: {e}")
     
@@ -1926,13 +1947,281 @@ class AffiliateManager:
         return commission
 
 
+# ============================================
+# SHOPIFY MANAGER
+# ============================================
+class ShopifyManager:
+    """Manages Shopify store integration - products, orders, and revenue tracking"""
+    
+    def __init__(self, db_conn=None):
+        self.store_domain = os.getenv('SHOPIFY_STORE_DOMAIN', '')
+        self.api_key = os.getenv('SHOPIFY_API_KEY', '')
+        self.api_secret = os.getenv('SHOPIFY_API_SECRET', '')
+        self.access_token = os.getenv('SHOPIFY_ACCESS_TOKEN', '')
+        self.webhook_secret = os.getenv('SHOPIFY_WEBHOOK_SECRET', '')
+        self.enabled = os.getenv('SHOPIFY_ENABLED', 'false').lower() in ('true', '1', 'yes', 'on')
+        
+        self.db = db_conn
+        self.products_cache = {}  # Cache product catalog
+        self.last_sync_time = None
+        self.api_version = '2024-01'  # Shopify API version
+        self.logger = logging.getLogger('CashEngine.ShopifyManager')
+        
+        if self.db:
+            self._ensure_order_id_column()
+    
+    def _ensure_order_id_column(self):
+        """Add order_id column to revenue table if it doesn't exist"""
+        try:
+            self.db.cursor().execute('ALTER TABLE revenue ADD COLUMN order_id TEXT')
+            self.db.commit()
+        except sqlite3.OperationalError:
+            # Column already exists, ignore
+            pass
+    
+    def _get_api_url(self, endpoint: str) -> str:
+        """Build Shopify Admin API URL"""
+        if not self.store_domain:
+            raise ValueError("SHOPIFY_STORE_DOMAIN not configured")
+        # Remove protocol if present
+        domain = self.store_domain.replace('https://', '').replace('http://', '')
+        return f"https://{domain}/admin/api/{self.api_version}{endpoint}"
+    
+    def _get_headers(self) -> Dict[str, str]:
+        """Get request headers for Shopify API"""
+        return {
+            "X-Shopify-Access-Token": self.access_token,
+            "Content-Type": "application/json"
+        }
+    
+    def fetch_products(self) -> List[Dict[str, Any]]:
+        """Fetch all products from Shopify store"""
+        if not self.enabled or not self.access_token:
+            self.logger.warning("Shopify not enabled or access token missing")
+            return []
+        
+        try:
+            url = self._get_api_url("/products.json")
+            headers = self._get_headers()
+            
+            products = []
+            page_info = None
+            
+            # Handle pagination
+            while True:
+                params = {"limit": 250}  # Max products per page
+                if page_info:
+                    params["page_info"] = page_info
+                
+                resp = requests.get(url, headers=headers, params=params, timeout=15)
+                
+                if resp.status_code == 200:
+                    data = resp.json()
+                    page_products = data.get("products", [])
+                    products.extend(page_products)
+                    
+                    # Check for next page
+                    link_header = resp.headers.get("Link", "")
+                    if 'rel="next"' not in link_header:
+                        break
+                    
+                    # Extract page_info from Link header
+                    next_match = re.search(r'page_info=([^&>]+)', link_header)
+                    if next_match:
+                        page_info = next_match.group(1)
+                    else:
+                        break
+                elif resp.status_code == 401:
+                    self.logger.error(f"Shopify API authentication failed (401)")
+                    break
+                elif resp.status_code == 429:
+                    self.logger.warning("Shopify API rate limit - waiting 2 seconds")
+                    time.sleep(2)
+                    continue
+                else:
+                    self.logger.error(f"Shopify API error: HTTP {resp.status_code} - {resp.text[:200]}")
+                    break
+            
+            self.products_cache = {p["id"]: p for p in products}
+            self.last_sync_time = datetime.now()
+            self.logger.info(f"Fetched {len(products)} products from Shopify")
+            return products
+            
+        except Exception as e:
+            self.logger.error(f"Error fetching Shopify products: {e}")
+            return []
+    
+    def get_product(self, product_id: int) -> Optional[Dict[str, Any]]:
+        """Get single product by ID"""
+        if product_id in self.products_cache:
+            return self.products_cache[product_id]
+        
+        try:
+            url = self._get_api_url(f"/products/{product_id}.json")
+            headers = self._get_headers()
+            resp = requests.get(url, headers=headers, timeout=15)
+            
+            if resp.status_code == 200:
+                data = resp.json()
+                product = data.get("product", {})
+                self.products_cache[product_id] = product
+                return product
+            else:
+                self.logger.error(f"Shopify product fetch error: HTTP {resp.status_code}")
+                return None
+        except Exception as e:
+            self.logger.error(f"Error fetching Shopify product {product_id}: {e}")
+            return None
+    
+    def get_product_url(self, product_handle: str, utm_source: str = "cash_engine", 
+                       utm_medium: str = "social", utm_campaign: str = "promotion") -> str:
+        """Generate Shopify product URL with UTM parameters"""
+        if not self.store_domain:
+            return ""
+        
+        domain = self.store_domain.replace('https://', '').replace('http://', '')
+        base_url = f"https://{domain}/products/{product_handle}"
+        utm_params = f"?utm_source={utm_source}&utm_medium={utm_medium}&utm_campaign={utm_campaign}"
+        return base_url + utm_params
+    
+    def sync_products_to_db(self) -> int:
+        """Sync Shopify products to database"""
+        if not self.db:
+            self.logger.warning("Database connection not available for product sync")
+            return 0
+        
+        products = self.fetch_products()
+        if not products:
+            return 0
+        
+        cursor = self.db.cursor()
+        synced = 0
+        
+        for product in products:
+            try:
+                product_id = product.get("id")
+                title = product.get("title", "")
+                handle = product.get("handle", "")
+                variants = product.get("variants", [])
+                price = float(variants[0].get("price", 0)) if variants else 0.0
+                description = product.get("body_html", "")[:500] if product.get("body_html") else ""
+                
+                # Check if product exists
+                cursor.execute('SELECT id FROM products WHERE name = ? AND type = ?', 
+                             (title, "shopify"))
+                
+                if cursor.fetchone():
+                    # Update existing
+                    cursor.execute('''
+                        UPDATE products 
+                        SET price = ?, description = ?
+                        WHERE name = ? AND type = ?
+                    ''', (price, description, title, "shopify"))
+                else:
+                    # Insert new
+                    cursor.execute('''
+                        INSERT INTO products (name, price, type, description, created_date)
+                        VALUES (?, ?, ?, ?, ?)
+                    ''', (title, price, "shopify", description, datetime.now()))
+                
+                synced += 1
+            except Exception as e:
+                self.logger.error(f"Error syncing product {product.get('title', 'unknown')}: {e}")
+        
+        self.db.commit()
+        self.logger.info(f"Synced {synced} Shopify products to database")
+        return synced
+    
+    def find_matching_product(self, content: str) -> Optional[Dict[str, Any]]:
+        """Find best matching Shopify product for content based on keywords"""
+        if not self.products_cache:
+            self.fetch_products()
+        
+        if not self.products_cache:
+            return None
+        
+        content_lower = content.lower()
+        best_match = None
+        best_score = 0
+        
+        for product in self.products_cache.values():
+            title = product.get("title", "").lower()
+            handle = product.get("handle", "").lower()
+            tags = [t.lower() for t in product.get("tags", "").split(",") if t.strip()]
+            
+            # Simple keyword matching score
+            score = 0
+            if title in content_lower:
+                score += 10
+            if handle in content_lower:
+                score += 8
+            for tag in tags:
+                if tag.strip() in content_lower:
+                    score += 5
+            
+            # Boost score for product type keywords
+            product_type = product.get("product_type", "").lower()
+            if product_type and product_type in content_lower:
+                score += 7
+            
+            if score > best_score:
+                best_score = score
+                best_match = product
+        
+        # Only return if score is above threshold
+        return best_match if best_score >= 5 else None
+    
+    def record_order_revenue(self, order_data: Dict[str, Any]) -> bool:
+        """Record Shopify order as revenue in database"""
+        if not self.db:
+            self.logger.warning("Database connection not available for revenue recording")
+            return False
+        
+        try:
+            total_price = float(order_data.get("total_price", 0))
+            order_number = order_data.get("order_number", "")
+            order_id = order_data.get("id", "")
+            created_at = order_data.get("created_at", datetime.now().isoformat())
+            currency = order_data.get("currency", "USD")
+            
+            # Extract product names from line items
+            line_items = order_data.get("line_items", [])
+            product_names = [item.get("title", "") for item in line_items]
+            description = f"Shopify Order #{order_number}: {', '.join(product_names[:3])}"
+            if len(product_names) > 3:
+                description += f" and {len(product_names) - 3} more"
+            
+            cursor = self.db.cursor()
+            
+            # Check if order already recorded
+            cursor.execute('SELECT id FROM revenue WHERE order_id = ?', (str(order_id),))
+            if cursor.fetchone():
+                self.logger.debug(f"Shopify order {order_number} already recorded")
+                return True
+            
+            # Record revenue
+            cursor.execute('''
+                INSERT INTO revenue (source, amount, currency, description, status, order_id, timestamp)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ''', ("shopify", total_price, currency, description, "completed", str(order_id), created_at))
+            
+            self.db.commit()
+            self.logger.info(f"Recorded Shopify order #{order_number}: ${total_price} {currency}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error recording Shopify order revenue: {e}")
+            return False
+
+
 class ContentSyndicator:
     """REAL content syndication - distributes content with affiliate links"""
-    def __init__(self, affiliate_manager, products_dir: Path = Path("./products"), viral_template_manager=None):
+    def __init__(self, affiliate_manager, products_dir: Path = Path("./products"), viral_template_manager=None, shopify_manager=None):
         self.affiliate_manager = affiliate_manager
         self.products_dir = products_dir
         self.syndicated_count = 0
         self.viral_template_manager = viral_template_manager
+        self.shopify_manager = shopify_manager
         self._twitter_state_path = Path("./data/twitter_post_state.json")
         self._twitter_state_lock = threading.Lock()
         self._platform_status = {}  # Track platform health
@@ -1943,7 +2232,9 @@ class ContentSyndicator:
             return 0
         platforms = platforms or ["instagram", "twitter"]
         content = content_file.read_text(encoding='utf-8')
-        enhanced_content = self._embed_affiliate_links(content)
+        # Embed affiliate links with default platform (first in list)
+        default_platform = platforms[0] if platforms else "social"
+        enhanced_content = self._embed_affiliate_links(content, platform=default_platform)
         output_dir = Path("./data/content/syndicated")
         output_dir.mkdir(parents=True, exist_ok=True)
         output_file = output_dir / f"{content_file.stem}_syndicated_{datetime.now().strftime('%Y%m%d')}.txt"
@@ -1952,9 +2243,11 @@ class ContentSyndicator:
         logger.info(f"Syndicated content: {content_file.name} to {len(platforms)} platforms")
         return 1
     
-    def _embed_affiliate_links(self, content: str) -> str:
-        """Embed affiliate links in content"""
+    def _embed_affiliate_links(self, content: str, platform: str = "social") -> str:
+        """Embed affiliate links in content - supports both Gumroad and Shopify products"""
         enhanced = content
+        
+        # 1. Check Gumroad affiliate campaigns
         gumroad_token = os.getenv('GUMROAD_TOKEN')
         if gumroad_token and self.affiliate_manager.campaigns:
             for campaign in self.affiliate_manager.campaigns:
@@ -1967,7 +2260,37 @@ class ContentSyndicator:
                     if link and link != campaign.get("product_url", ""):  # Only replace if link was actually generated
                         # Replace the actual product name found in content (not the campaign name)
                         enhanced = enhanced.replace(product_name, f"{product_name} [Get it here: {link}]")
-                        logger.debug(f"Embedded affiliate link for {product_name}: {link}")
+                        logger.debug(f"Embedded Gumroad affiliate link for {product_name}: {link}")
+        
+        # 2. Check Shopify products
+        if self.shopify_manager and self.shopify_manager.enabled:
+            shopify_product = self.shopify_manager.find_matching_product(content)
+            if shopify_product:
+                product_title = shopify_product.get("title", "")
+                product_handle = shopify_product.get("handle", "")
+                
+                # Generate Shopify product URL with UTM tracking
+                shopify_url = self.shopify_manager.get_product_url(
+                    product_handle,
+                    utm_source="cash_engine",
+                    utm_medium="social",
+                    utm_campaign=platform
+                )
+                
+                if shopify_url and product_title:
+                    # Only add link if not already present in content
+                    if shopify_url not in enhanced and product_handle not in enhanced:
+                        # Insert after first mention of product title
+                        if product_title.lower() in enhanced.lower():
+                            # Find first occurrence (case-insensitive)
+                            pattern = re.compile(re.escape(product_title), re.IGNORECASE)
+                            enhanced = pattern.sub(f"{product_title} [Get it here: {shopify_url}]", enhanced, count=1)
+                            logger.debug(f"Embedded Shopify product link for {product_title}: {shopify_url}")
+                        else:
+                            # Product matched by keywords but title not in content - append link
+                            enhanced = f"{enhanced}\n\n🔗 Check out: {shopify_url}"
+                            logger.debug(f"Appended Shopify product link for {product_title}: {shopify_url}")
+        
         return enhanced
     
     def auto_syndicate_from_folder(self) -> int:
@@ -2112,9 +2435,7 @@ class ContentSyndicator:
             else:
                 social_text = content
             # Remove hashtags from main text (can add in comments later)
-            import re
             social_text = re.sub(r'#\w+', '', social_text)
-            return social_text[:max_length].strip()
         
         elif platform.lower() == "facebook":
             # Facebook: Supports links, images, hashtags (max 30)
@@ -2126,7 +2447,6 @@ class ContentSyndicator:
                 social_text = body
             else:
                 social_text = content
-            return social_text[:max_length]
         
         elif platform.lower() == "instagram":
             # Instagram: Hashtags (max 30), emoji-friendly
@@ -2138,7 +2458,6 @@ class ContentSyndicator:
                 social_text = body
             else:
                 social_text = content
-            return social_text[:max_length]
         
         else:  # Twitter or default
             # Twitter: 280 chars, concise
@@ -2150,7 +2469,12 @@ class ContentSyndicator:
                 social_text = body[:max_length]
             else:
                 social_text = content[:max_length]
-            return social_text[:max_length]
+        
+        # Embed affiliate links (Gumroad and Shopify) with platform-specific tracking
+        social_text = self._embed_affiliate_links(social_text, platform=platform.lower())
+        
+        # Final length check and return
+        return social_text[:max_length].strip()
     
     def _post_to_twitter(self, content: str, content_file: Path) -> bool:
         """Post content to Twitter/X (requires API keys)"""
@@ -2753,6 +3077,7 @@ class CashEngine:
         self.setup_directories()
         self.setup_database()
         self.setup_apis()
+        # Use self.conn for main thread, but classes will get thread-local connections when needed
         self.revenue_tracker = RevenueTracker(self.conn)
         self.risk_manager = RiskManager()
         self.execution_engine = ExecutionEngine()
@@ -2762,12 +3087,42 @@ class CashEngine:
         self.lead_bot = LeadBot(self.conn, os.getenv('MARKETING_AGENT_URL', 'http://localhost:9000'))
         self.affiliate_manager = AffiliateManager(os.getenv('MARKETING_AGENT_URL', 'http://localhost:9000'))
         self.viral_template_manager = ViralTemplateManager() if os.getenv('VIRAL_TEMPLATES_ENABLED', 'true').lower() == 'true' else None
-        self.content_syndicator = ContentSyndicator(self.affiliate_manager, viral_template_manager=self.viral_template_manager)
+        self.shopify_manager = ShopifyManager(self.conn)
+        self.content_syndicator = ContentSyndicator(self.affiliate_manager, viral_template_manager=self.viral_template_manager, shopify_manager=self.shopify_manager)
         
         # Template optimization components
         self.template_ab_testing = TemplateABTesting(self.conn)
         self.trend_analyzer = TrendAnalyzer(self.conn)
         self.template_optimizer = TemplateOptimizer(self.conn)
+        
+        # AI Course Corrector (includes Smart Cleanup System)
+        if COURSE_CORRECTION_AVAILABLE and os.getenv('COURSE_CORRECTION_ENABLED', 'true').lower() == 'true':
+            try:
+                self.course_corrector = AICourseCorrector(cash_engine=self)
+                logger.info("✅ AI Course Correction System enabled (with Smart Cleanup)")
+            except Exception as e:
+                logger.warning(f"⚠️ AI Course Correction System initialization failed: {e}")
+                self.course_corrector = None
+        else:
+            self.course_corrector = None
+        
+        # Weekly Report Generator
+        if WEEKLY_REPORT_AVAILABLE and os.getenv('WEEKLY_REPORT_ENABLED', 'true').lower() == 'true':
+            try:
+                self.weekly_report_generator = WeeklyReportGenerator(cash_engine=self)
+                logger.info("✅ Weekly Report Generator enabled")
+            except Exception as e:
+                logger.warning(f"⚠️ Weekly Report Generator initialization failed: {e}")
+                self.weekly_report_generator = None
+        else:
+            self.weekly_report_generator = None
+        
+        # Store reference to engine for thread-local connections
+        for obj in [self.revenue_tracker, self.product_factory, self.template_generator, 
+                   self.lead_bot, self.shopify_manager, self.template_ab_testing, 
+                   self.trend_analyzer, self.template_optimizer]:
+            if hasattr(obj, 'db') and hasattr(obj, 'cursor'):
+                obj._engine = self  # Store reference to engine for thread-local access
         self.last_trend_analysis = None
         
         self.is_running = False
@@ -2871,6 +3226,8 @@ class CashEngine:
         # Use check_same_thread=False to allow cross-thread access
         self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.cursor = self.conn.cursor()
+        # Thread-local storage for database connections
+        self._local = threading.local()
         
         # Create tables
         self.cursor.execute('''
@@ -3037,6 +3394,13 @@ class CashEngine:
         self.conn.commit()
         logger.info("💾 Database initialized")
     
+    def get_db_connection(self):
+        """Get thread-local database connection"""
+        if not hasattr(self._local, 'conn') or self._local.conn is None:
+            self._local.conn = sqlite3.connect(self.db_path, check_same_thread=False)
+            self._local.conn.row_factory = sqlite3.Row
+        return self._local.conn
+    
     def setup_apis(self):
         """Initialize all API connections"""
         self.apis = {}
@@ -3100,10 +3464,44 @@ class CashEngine:
         schedule.every(8).hours.do(self.generate_products)  # Increased from 24h to 8h for faster product creation
         schedule.every(1).days.do(self.generate_daily_report)
         
+        # Shopify product sync (every 6 hours)
+        if self.shopify_manager and self.shopify_manager.enabled:
+            schedule.every(6).hours.do(self.sync_shopify_products)
+        
         # Template optimization tasks
         if CONFIG["template_optimization"]["trend_analysis_enabled"]:
             trend_interval = CONFIG["template_optimization"]["trend_analysis_interval"]
             schedule.every(trend_interval).hours.do(self.trend_analyzer.update_trend_cache)
+        
+        # AI Course Correction - scheduled performance checks
+        if self.course_corrector:
+            correction_interval = int(os.getenv('PERFORMANCE_CHECK_INTERVAL_HOURS', '6'))
+            schedule.every(correction_interval).hours.do(self.run_course_correction)
+            logger.info(f"🔍 AI Course Correction scheduled every {correction_interval} hours")
+        
+        # Weekly Report - scheduled generation
+        if self.weekly_report_generator:
+            report_day = os.getenv('WEEKLY_REPORT_DAY', 'monday').lower()
+            report_time = os.getenv('WEEKLY_REPORT_TIME', '09:00')
+            
+            # Map day names to schedule
+            day_map = {
+                'monday': schedule.every().monday,
+                'tuesday': schedule.every().tuesday,
+                'wednesday': schedule.every().wednesday,
+                'thursday': schedule.every().thursday,
+                'friday': schedule.every().friday,
+                'saturday': schedule.every().saturday,
+                'sunday': schedule.every().sunday
+            }
+            
+            if report_day in day_map:
+                day_map[report_day].at(report_time).do(self.generate_weekly_report)
+                logger.info(f"📊 Weekly Report scheduled for {report_day} at {report_time}")
+            else:
+                # Default to Monday
+                schedule.every().monday.at(report_time).do(self.generate_weekly_report)
+                logger.info(f"📊 Weekly Report scheduled for Monday at {report_time}")
         
         # Start scheduler in background thread
         def run_scheduler():
@@ -3116,6 +3514,14 @@ class CashEngine:
         
         # Run initial execution
         self.run_revenue_streams()
+        
+        # Run initial course correction check (after a short delay to let system initialize)
+        if self.course_corrector:
+            def initial_correction_check():
+                time.sleep(300)  # Wait 5 minutes for system to initialize
+                self.run_course_correction()
+            correction_thread = threading.Thread(target=initial_correction_check, daemon=True)
+            correction_thread.start()
     
     def stop(self):
         """Stop the cash engine"""
@@ -3330,6 +3736,21 @@ class CashEngine:
         logger.info("🎯 Generating leads...")
         self.lead_bot.generate_leads("scheduled", count=20)
     
+    def sync_shopify_products(self):
+        """Sync Shopify products from store to database"""
+        if not self.shopify_manager or not self.shopify_manager.enabled:
+            return
+        
+        logger.info("🛍️ Syncing Shopify products...")
+        try:
+            synced_count = self.shopify_manager.sync_products_to_db()
+            if synced_count > 0:
+                logger.info(f"✅ Synced {synced_count} Shopify products to database")
+            else:
+                logger.debug("No Shopify products to sync or sync failed")
+        except Exception as e:
+            logger.error(f"Error syncing Shopify products: {e}")
+    
     def generate_products(self):
         """Generate products periodically with template optimization"""
         logger.info("📦 Generating products...")
@@ -3541,6 +3962,60 @@ class CashEngine:
                         logger.info(f"✅ Optimized template created: {optimized.name}")
         except Exception as e:
             logger.error(f"Error optimizing templates: {e}")
+    
+    def run_course_correction(self):
+        """Run AI-driven course correction analysis and fixes"""
+        if not self.course_corrector:
+            return
+        
+        try:
+            logger.info("🔍 Running AI Course Correction...")
+            correction_days = int(os.getenv('COURSE_CORRECTION_PERIOD_DAYS', '3'))
+            report = self.course_corrector.run_course_correction(days=correction_days)
+            
+            if "error" in report:
+                logger.error(f"Course correction failed: {report['error']}")
+                return
+            
+            if report.get("needs_correction"):
+                logger.warning(f"⚠️  Course correction needed: {len(report['issues'])} issues identified")
+                for issue in report['issues']:
+                    logger.warning(f"   • {issue.get('description', 'Unknown issue')}")
+                
+                # Log implemented fixes
+                fixes_impl = report.get("fixes_implemented", {})
+                if fixes_impl.get("implemented"):
+                    logger.info(f"✅ Implemented {len(fixes_impl['implemented'])} fixes")
+                if fixes_impl.get("failed"):
+                    logger.warning(f"⚠️  {len(fixes_impl['failed'])} fixes failed")
+            else:
+                logger.info("✅ Performance metrics within acceptable range")
+        
+        except Exception as e:
+            logger.error(f"Course correction error: {e}")
+    
+    def generate_weekly_report(self):
+        """Generate comprehensive weekly work report"""
+        if not self.weekly_report_generator:
+            return
+        
+        try:
+            logger.info("📊 Generating Weekly Work Report...")
+            report_days = int(os.getenv('WEEKLY_REPORT_DAYS', '7'))
+            result = self.weekly_report_generator.generate_weekly_report(days=report_days)
+            
+            if "error" in result:
+                logger.error(f"Weekly report generation failed: {result['error']}")
+                return
+            
+            if result.get("success"):
+                logger.info(f"✅ Weekly report generated: {result.get('markdown_file', 'N/A')}")
+                logger.info("📄 Report includes: What worked, what didn't, why, future actions, and honest recommendations")
+            else:
+                logger.warning("⚠️ Weekly report generation completed with warnings")
+        
+        except Exception as e:
+            logger.error(f"Weekly report generation error: {e}")
     
     def generate_daily_report(self):
         """Generate daily revenue report with analytics"""

@@ -10,6 +10,9 @@ import json
 import sqlite3
 import threading
 import time
+import hmac
+import hashlib
+import base64
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Any, Optional
@@ -105,6 +108,57 @@ def get_revenue_data(days: int = 30) -> Dict[str, Any]:
     except Exception as e:
         print(f"Error getting revenue data: {e}")
         return {"total": 0.0, "by_source": {}, "recent": []}
+
+def get_shopify_stats(days: int = 30) -> Dict[str, Any]:
+    """Get Shopify-specific statistics"""
+    conn = get_db_connection()
+    if not conn:
+        return {
+            "order_count": 0,
+            "total_revenue": 0.0,
+            "average_order_value": 0.0,
+            "currency": "USD"
+        }
+    
+    try:
+        cursor = conn.cursor()
+        
+        # Count Shopify orders and calculate totals
+        cursor.execute('''
+            SELECT COUNT(*) as order_count, 
+                   SUM(amount) as total_revenue,
+                   AVG(amount) as avg_order_value,
+                   currency
+            FROM revenue 
+            WHERE source = 'shopify' 
+              AND timestamp >= datetime('now', '-' || ? || ' days') 
+              AND status = 'completed'
+            GROUP BY currency
+        ''', (days,))
+        
+        result = cursor.fetchone()
+        if result:
+            return {
+                "order_count": result[0] or 0,
+                "total_revenue": float(result[1] or 0.0),
+                "average_order_value": float(result[2] or 0.0),
+                "currency": result[3] or "USD"
+            }
+        else:
+            return {
+                "order_count": 0,
+                "total_revenue": 0.0,
+                "average_order_value": 0.0,
+                "currency": "USD"
+            }
+    except Exception as e:
+        print(f"Error getting Shopify stats: {e}")
+        return {
+            "order_count": 0,
+            "total_revenue": 0.0,
+            "average_order_value": 0.0,
+            "currency": "USD"
+        }
 
 def get_products_data() -> Dict[str, Any]:
     """Get products data"""
@@ -295,11 +349,14 @@ def get_system_status() -> Dict[str, Any]:
     gumroad_token = os.getenv('GUMROAD_TOKEN')
     openai_key = os.getenv('OPENAI_API_KEY')
     marketing_agent_url = os.getenv('MARKETING_AGENT_URL', 'http://localhost:9000')
+    shopify_enabled = os.getenv('SHOPIFY_ENABLED', 'false').lower() in ('true', '1', 'yes', 'on')
+    shopify_access_token = os.getenv('SHOPIFY_ACCESS_TOKEN', '')
     
     status["api_status"] = {
         "gumroad": bool(gumroad_token),
         "openai": bool(openai_key),
-        "marketing_agent": bool(marketing_agent_url)
+        "marketing_agent": bool(marketing_agent_url),
+        "shopify": shopify_enabled and bool(shopify_access_token)
     }
     
     # Revenue streams
@@ -309,6 +366,8 @@ def get_system_status() -> Dict[str, Any]:
         "lead_generation_bot",
         "content_syndication"
     ]
+    if shopify_enabled:
+        revenue_streams.append("shopify_integration")
     status["revenue_streams"] = [{"name": s, "status": "active"} for s in revenue_streams]
     
     return status
@@ -378,6 +437,11 @@ def get_dashboard_data() -> Dict[str, Any]:
             "week": get_revenue_data(7),
             "month": get_revenue_data(30)
         },
+        "shopify": {
+            "today": get_shopify_stats(1),
+            "week": get_shopify_stats(7),
+            "month": get_shopify_stats(30)
+        },
         "products": get_products_data(),
         "leads": get_leads_data(30),
         "content_performance": get_content_performance(30),
@@ -418,10 +482,118 @@ def api_status():
     """API endpoint for system status"""
     return jsonify(get_system_status())
 
+@app.route('/api/shopify')
+def api_shopify():
+    """API endpoint for Shopify statistics"""
+    days = int(request.args.get('days', 30))
+    return jsonify(get_shopify_stats(days))
+
 @app.route('/api/health')
 def api_health():
     """Health check endpoint"""
     return jsonify({"status": "healthy", "timestamp": datetime.now().isoformat()})
+
+@app.route('/webhooks/shopify/orders', methods=['POST'])
+def shopify_webhook():
+    """Shopify order webhook endpoint for real-time revenue tracking"""
+    webhook_secret = os.getenv('SHOPIFY_WEBHOOK_SECRET', '')
+    shopify_enabled = os.getenv('SHOPIFY_ENABLED', 'false').lower() in ('true', '1', 'yes', 'on')
+    
+    if not shopify_enabled:
+        return jsonify({"error": "Shopify integration not enabled"}), 403
+    
+    # Verify webhook signature
+    if webhook_secret:
+        signature = request.headers.get('X-Shopify-Hmac-Sha256', '')
+        calculated_signature = base64.b64encode(
+            hmac.new(
+                webhook_secret.encode('utf-8'),
+                request.data,
+                hashlib.sha256
+            ).digest()
+        ).decode('utf-8')
+        
+        if not hmac.compare_digest(calculated_signature, signature):
+            print(f"⚠️ Shopify webhook signature verification failed")
+            return jsonify({"error": "Invalid webhook signature"}), 401
+    
+    try:
+        order_data = request.get_json()
+        
+        if not order_data:
+            return jsonify({"error": "No order data received"}), 400
+        
+        # Extract order information
+        total_price = float(order_data.get("total_price", 0))
+        order_number = order_data.get("order_number", "")
+        order_id = order_data.get("id", "")
+        created_at = order_data.get("created_at", datetime.now().isoformat())
+        currency = order_data.get("currency", "USD")
+        
+        # Extract product names from line items
+        line_items = order_data.get("line_items", [])
+        product_names = [item.get("title", "") for item in line_items]
+        description = f"Shopify Order #{order_number}: {', '.join(product_names[:3])}"
+        if len(product_names) > 3:
+            description += f" and {len(product_names) - 3} more"
+        
+        # Record revenue in database
+        conn = get_db_connection()
+        if not conn:
+            print("⚠️ Database connection not available for Shopify webhook")
+            return jsonify({"error": "Database unavailable"}), 500
+        
+        try:
+            # Ensure order_id column exists
+            cursor = conn.cursor()
+            try:
+                cursor.execute('ALTER TABLE revenue ADD COLUMN order_id TEXT')
+                conn.commit()
+            except sqlite3.OperationalError:
+                # Column already exists, ignore
+                pass
+            
+            # Check if order already recorded (deduplication)
+            cursor.execute('SELECT id FROM revenue WHERE order_id = ?', (str(order_id),))
+            if cursor.fetchone():
+                print(f"ℹ️ Shopify order #{order_number} already recorded (duplicate webhook)")
+                return jsonify({"status": "duplicate", "order_number": order_number}), 200
+            
+            # Record revenue
+            cursor.execute('''
+                INSERT INTO revenue (source, amount, currency, description, status, order_id, timestamp)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ''', ("shopify", total_price, currency, description, "completed", str(order_id), created_at))
+            
+            conn.commit()
+            
+            print(f"✅ Recorded Shopify order #{order_number}: ${total_price} {currency}")
+            
+            # Emit real-time update to connected clients
+            socketio.emit('shopify_order', {
+                "order_number": order_number,
+                "amount": total_price,
+                "currency": currency,
+                "products": product_names[:5]  # First 5 products
+            })
+            
+            return jsonify({
+                "status": "success",
+                "order_number": order_number,
+                "amount": total_price,
+                "currency": currency
+            }), 200
+            
+        except Exception as db_error:
+            conn.rollback()
+            print(f"❌ Database error recording Shopify order: {db_error}")
+            return jsonify({"error": "Database error"}), 500
+            
+    except Exception as e:
+        print(f"❌ Error processing Shopify webhook: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": "Internal server error"}), 500
 
 # WebSocket Events
 @socketio.on('connect')

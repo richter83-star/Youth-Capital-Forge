@@ -1,4 +1,4 @@
-# Daily Wealth Metrics Tracker - Notion Template [Get it here: http://localhost:9000/r/toe5q3b5]
+# Daily Wealth Metrics Tracker - Notion Template [Get it here: http://localhost:9000/r/yyt1ey9g]
 
 ## Sales Blurb
 
@@ -20,9 +20,9 @@ Take control, eliminate guesswork, and accelerate your wealth journey today. Cli
 
 ---
 
-## Template [Get it here: http://localhost:9000/r/toe5q3b5] Structure
+## Template [Get it here: http://localhost:9000/r/yyt1ey9g] Structure
 
-# Daily Wealth Metrics Tracker - Notion Template [Get it here: http://localhost:9000/r/toe5q3b5] Structure
+# Daily Wealth Metrics Tracker - Notion Template [Get it here: http://localhost:9000/r/yyt1ey9g] Structure
 
 ## Dashboard Overview
 
@@ -155,7 +155,7 @@ Take control, eliminate guesswork, and accelerate your wealth journey today. Cli
 
 - **Tax‑Optimization Cheat Sheet** (Text): Key deductions, quarterly filing dates, and strategies for maximizing after‑tax returns
 
-- **Pre‑built KPI Dashboards** (Template [Get it here: http://localhost:9000/r/toe5q3b5] Button):
+- **Pre‑built KPI Dashboards** (Template [Get it here: http://localhost:9000/r/yyt1ey9g] Button):
   - Cash Flow KPI
   - Investment ROI KPI
   - Expense Ratio KPI
